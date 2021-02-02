@@ -1,0 +1,270 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Controller;
+
+import Model.CargarComboCategory;
+import Model.ConsultSale;
+import Model.Products;
+import Model.Sale;
+import View.Menufrm;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author toshiba
+ */
+public class CtrlSale implements ActionListener {
+    
+    Sale sale = new Sale();
+    ConsultSale csale= new ConsultSale();
+    Menufrm frmsale = new Menufrm();
+    DefaultTableModel modelo = new DefaultTableModel(); 
+   
+    public CtrlSale(Sale sale, ConsultSale csale, Menufrm frmsale,DefaultTableModel modelo) {
+        this.sale= sale;
+        this.frmsale=frmsale;
+        this.csale= csale;
+        this.modelo=modelo;
+        this.frmsale.btnAddAlitas.addActionListener(this);
+        this.frmsale.btnAddBoneless.addActionListener(this);
+        this.frmsale.btnAddBurger.addActionListener(this);
+        this.frmsale.btnAddPotatoes.addActionListener(this);
+        this.frmsale.btnAddDrink.addActionListener(this);
+        this.frmsale.btnAddDesserts.addActionListener(this);
+        this.frmsale.btnTotal.addActionListener(this);
+        this.frmsale.btnLimpiar.addActionListener(this);
+        //listar(frmsale.jSale);
+    }
+     
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()== frmsale.btnAddAlitas) {
+            agregar();
+            limpiarTabla();
+            listar(frmsale.jSale);
+            limpiarCajas();
+            //frmsale.txtTotalPrice.setText(Double.toString(csale.totalPrice(Integer.parseInt(frmsale.txtNumOrder.getText()))));
+        }
+        if (e.getSource()== frmsale.btnAddBoneless) {
+            agregarBoneless();
+            limpiarTabla();
+            listar(frmsale.jSale);
+            limpiarCajas();
+            
+        }if (e.getSource()== frmsale.btnAddBurger) {
+            agregarHamburguesa();
+            limpiarTabla();
+            listar(frmsale.jSale);
+            limpiarCajas();
+            
+        }if (e.getSource()== frmsale.btnAddPotatoes) {
+            agregarPapas();
+            limpiarTabla();
+            listar(frmsale.jSale);
+            limpiarCajas();
+            
+        }if (e.getSource()== frmsale.btnAddDrink) {
+            agregarBebidas();
+            limpiarTabla();
+            listar(frmsale.jSale);
+            limpiarCajas();
+            
+        }if (e.getSource()== frmsale.btnAddDesserts) {
+            agregarDesserts();
+            limpiarTabla();
+            listar(frmsale.jSale);
+            limpiarCajas();
+            
+        }if (e.getSource()== frmsale.btnTotal) {
+            frmsale.txtTotalPrice.setText(Double.toString(csale.totalPrice(Integer.parseInt(frmsale.txtNumOrder.getText()))));
+            
+        }if (e.getSource()== frmsale.btnLimpiar) {
+            eliminar();
+            limpiarTabla();
+            listar(frmsale.jSale);
+            limpiarCajas();
+        }
+    }
+    void limpiarTabla() {
+        for (int i = 0; i < frmsale.jSale.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i=i-1;
+        }
+    }
+    void limpiarCajas(){
+        frmsale.jcFlavorsAlitas.setSelectedIndex(0);
+        frmsale.jSpLotAlitas.setValue(0);
+        frmsale.txtDescriptionAlitas.setText(null);
+        frmsale.jcFlavorsB.setSelectedIndex(0);
+        frmsale.jsLotBoneless.setValue(0);
+        frmsale.txtDescriptionBoneless.setText(null);
+        frmsale.jcTypeBurger.setSelectedIndex(0);
+        frmsale.JSLotBurger.setValue(0);
+        frmsale.txtDescriptionBurger.setText(null);
+        frmsale.jcPotatoes.setSelectedIndex(0);
+        frmsale.jsLotPotatoes.setValue(0);
+        frmsale.txtDescriptionPotatoes.setText(null);
+        frmsale.jcDrinks.setSelectedIndex(0);
+        frmsale.jSLotDrink.setValue(0);
+        frmsale.txtDescriptionDrink.setText(null);
+        frmsale.jcDesserts.setSelectedIndex(0);
+        frmsale.jSLotDesserts.setValue(0);
+        frmsale.txtDescriptionDesserts.setText(null);
+        
+        frmsale.txtTotalPrice.setText(null);
+    }
+    public void listar(JTable tabla){
+        int id = Integer.parseInt(frmsale.txtNumOrder.getText());
+        modelo=(DefaultTableModel)tabla.getModel();
+        List <Sale> lista = csale.Listar(id);
+        Object [] object = new Object[2];
+        for (int i = 0; i < lista.size(); i++) {
+            object[0]= lista.get(i).getName_sproduct();
+            object[1]= lista.get(i).getTotal_sproduct();
+            modelo.addRow(object);
+        }
+        frmsale.jSale.setModel(modelo);
+    }
+    public void agregar(){
+        Double price_alitas = csale.priceAlitas();
+        String flavor = (String) frmsale.jcFlavorsAlitas.getSelectedItem();
+        Integer lot = (Integer) frmsale.jSpLotAlitas.getValue();
+        String description = frmsale.txtDescriptionAlitas.getText();
+        //Double total = Double.parseDouble(price_alitas * lot);
+        Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+        sale.setName_sproduct("ALITAS " + flavor);
+        sale.setLot_sproduct(lot);
+        sale.setDescription_sproduct(description);
+        sale.setTotal_sproduct(price_alitas * lot);
+        sale.setSales_id_sale(sale_id);
+        int r =csale.register(sale);
+        if (r==1) {
+            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+        }else{
+            JOptionPane.showMessageDialog(frmsale, "Error");
+        }
+    }
+    public void agregarBoneless(){
+//        Sale est = (Sale) frmsale.jcFlavorsB.getSelectedItem();
+//        Double price_boneless = est.getTotal_sproduct();
+        Double price_boneless = csale.priceBoneless();
+        String flavor = (String) frmsale.jcFlavorsB.getSelectedItem();
+        Integer lot = (Integer) frmsale.jsLotBoneless.getValue();
+        String description = frmsale.txtDescriptionBoneless.getText();
+        //Double total = Double.parseDouble(price_alitas * lot);
+        Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+        sale.setName_sproduct("BONELESS "+flavor);
+        sale.setLot_sproduct(lot);
+        sale.setDescription_sproduct(description);
+        sale.setTotal_sproduct(price_boneless * lot);
+        sale.setSales_id_sale(sale_id);
+        int r =csale.register(sale);
+        if (r==1) {
+            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+        }else{
+            JOptionPane.showMessageDialog(frmsale, "Error");
+        }
+    }
+    public void agregarHamburguesa(){
+        
+        
+        String typeburger = (String) frmsale.jcTypeBurger.getSelectedItem();
+        Double price_boneless = csale.priceBurger(typeburger);
+        Integer lot = (Integer) frmsale.JSLotBurger.getValue();
+        String description = frmsale.txtDescriptionBurger.getText();
+        //Double total = Double.parseDouble(price_alitas * lot);
+        Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+        sale.setName_sproduct(typeburger);
+        sale.setLot_sproduct(lot);
+        sale.setDescription_sproduct(description);
+        sale.setTotal_sproduct(price_boneless * lot);
+        sale.setSales_id_sale(sale_id);
+        int r =csale.register(sale);
+        if (r==1) {
+            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+        }else{
+            JOptionPane.showMessageDialog(frmsale, "Error");
+        }
+    }
+    public void agregarPapas(){
+        
+        
+        String typepotatoes = (String) frmsale.jcPotatoes.getSelectedItem();
+        Double price_potatoes = csale.pricePotatoes(typepotatoes);
+        Integer lot = (Integer) frmsale.jsLotPotatoes.getValue();
+        String description = frmsale.txtDescriptionPotatoes.getText();
+        //Double total = Double.parseDouble(price_alitas * lot);
+        Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+        sale.setName_sproduct(typepotatoes);
+        sale.setLot_sproduct(lot);
+        sale.setDescription_sproduct(description);
+        sale.setTotal_sproduct(price_potatoes * lot);
+        sale.setSales_id_sale(sale_id);
+        int r =csale.register(sale);
+        if (r==1) {
+            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+        }else{
+            JOptionPane.showMessageDialog(frmsale, "Error");
+        }
+    }
+    public void agregarBebidas(){
+        
+        
+        String typedrink = (String) frmsale.jcDrinks.getSelectedItem();
+        Double price_potatoes = csale.priceDrink(typedrink);
+        Integer lot = (Integer) frmsale.jSLotDrink.getValue();
+        String description = frmsale.txtDescriptionDrink.getText();
+        //Double total = Double.parseDouble(price_alitas * lot);
+        Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+        sale.setName_sproduct(typedrink);
+        sale.setLot_sproduct(lot);
+        sale.setDescription_sproduct(description);
+        sale.setTotal_sproduct(price_potatoes * lot);
+        sale.setSales_id_sale(sale_id);
+        int r =csale.register(sale);
+        if (r==1) {
+            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+        }else{
+            JOptionPane.showMessageDialog(frmsale, "Error");
+        }
+    }
+    public void agregarDesserts(){
+        
+        
+        String typeDesserts = (String) frmsale.jcDesserts.getSelectedItem();
+        Double price_desserts = csale.priceDrink(typeDesserts);
+        Integer lot = (Integer) frmsale.jSLotDesserts.getValue();
+        String description = frmsale.txtDescriptionDesserts.getText();
+        //Double total = Double.parseDouble(price_alitas * lot);
+        Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+        sale.setName_sproduct(typeDesserts);
+        sale.setLot_sproduct(lot);
+        sale.setDescription_sproduct(description);
+        sale.setTotal_sproduct(price_desserts * lot);
+        sale.setSales_id_sale(sale_id);
+        int r =csale.register(sale);
+        if (r==1) {
+            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+        }else{
+            JOptionPane.showMessageDialog(frmsale, "Error");
+        }
+    }
+    public void eliminar() {
+        
+        int id = Integer.parseInt(frmsale.txtNumOrder.getText());
+        csale.delete(id);
+        JOptionPane.showMessageDialog(frmsale, "Productos eliminados");
+        
+    }
+}
