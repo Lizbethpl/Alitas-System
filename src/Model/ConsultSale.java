@@ -23,7 +23,7 @@ public class ConsultSale extends Conexion{
     public List Listar (int id){
         
         List <Sale> datos = new ArrayList<>();
-        String sql = "SELECT name_sproduct, total_sproduct FROM sales_product where sales_id_sale="+id;
+        String sql = "SELECT name_sproduct, total_sproduct,id_sproduct FROM sales_product where sales_id_sale="+id;
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -31,6 +31,7 @@ public class ConsultSale extends Conexion{
                 Sale sale = new Sale();
                 sale.setName_sproduct(rs.getString(1));
                 sale.setTotal_sproduct(rs.getDouble(2));
+                sale.setId(rs.getInt(3));
                 datos.add(sale);
             }
             
@@ -164,6 +165,24 @@ public class ConsultSale extends Conexion{
         }
         return price_Desserts;
      }
+    public double priceAdditional(String Additional) {
+        double price_Additional  =0;
+        try {
+            
+            ResultSet res;
+            
+            String sql=("select price_additional from additional where name_additional ='"+Additional+"'");
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();   
+            rs.next();
+            price_Additional = rs.getInt("price_product");
+
+              con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return price_Additional;
+     }
     public double totalPrice(int id) {
         double totalPrice  =0;
         try {
@@ -184,6 +203,15 @@ public class ConsultSale extends Conexion{
      }
     public void delete(int id) {
         String sql = "delete from sales_product where sales_id_sale ="+id;
+        try {
+            con=getConnection();
+            ps= con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    public void deleteProduct(int id) {
+        String sql = "DELETE FROM sales_product WHERE id_sproduct="+id;
         try {
             con=getConnection();
             ps= con.prepareStatement(sql);

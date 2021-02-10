@@ -44,7 +44,13 @@ public class CtrlSale implements ActionListener {
         this.frmsale.btnAddDesserts.addActionListener(this);
         this.frmsale.btnTotal.addActionListener(this);
         this.frmsale.btnLimpiar.addActionListener(this);
+        this.frmsale.btnAddPotatoesAdditional.addActionListener(this);
+        this.frmsale.btnAddPotatoesBurguer.addActionListener(this);
+        this.frmsale.btnDeleteProduct.addActionListener(this);
         //listar(frmsale.jSale);
+        frmsale.jSale.getColumnModel().getColumn(2).setMaxWidth(0);
+        frmsale.jSale.getColumnModel().getColumn(2).setMinWidth(0);
+        frmsale.jSale.getColumnModel().getColumn(2).setPreferredWidth(0);
     }
      
     @Override
@@ -95,6 +101,21 @@ public class CtrlSale implements ActionListener {
             listar(frmsale.jSale);
             limpiarCajas();
         }
+        if (e.getSource()== frmsale.btnDeleteProduct) {
+            eliminarProducto();
+            limpiarTabla();
+            listar(frmsale.jSale);
+            limpiarCajas();
+        }
+        if (e.getSource()== frmsale.btnAddPotatoesAdditional) {
+            agregarPapasExtra();
+            limpiarTabla();
+            listar(frmsale.jSale);
+        }if (e.getSource()== frmsale.btnAddPotatoesBurguer) {
+            agregarPapasExtra();
+            limpiarTabla();
+            listar(frmsale.jSale);
+        }
     }
     void limpiarTabla() {
         for (int i = 0; i < frmsale.jSale.getRowCount(); i++) {
@@ -128,10 +149,11 @@ public class CtrlSale implements ActionListener {
         int id = Integer.parseInt(frmsale.txtNumOrder.getText());
         modelo=(DefaultTableModel)tabla.getModel();
         List <Sale> lista = csale.Listar(id);
-        Object [] object = new Object[2];
+        Object [] object = new Object[3];
         for (int i = 0; i < lista.size(); i++) {
             object[0]= lista.get(i).getName_sproduct();
             object[1]= lista.get(i).getTotal_sproduct();
+            object[2]= lista.get(i).getId();
             modelo.addRow(object);
         }
         frmsale.jSale.setModel(modelo);
@@ -176,30 +198,43 @@ public class CtrlSale implements ActionListener {
             JOptionPane.showMessageDialog(frmsale, "Error");
         }
     }
-    public void agregarHamburguesa(){
-        
-        
+    public void agregarHamburguesa(){       
         String typeburger = (String) frmsale.jcTypeBurger.getSelectedItem();
+        String Additionalburger = (String) frmsale.jcAdditionalBurguer.getSelectedItem();
+        Double priceAdditional = 10.0;
         Double price_boneless = csale.priceBurger(typeburger);
         Integer lot = (Integer) frmsale.JSLotBurger.getValue();
         String description = frmsale.txtDescriptionBurger.getText();
-        //Double total = Double.parseDouble(price_alitas * lot);
-        Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
-        sale.setName_sproduct(typeburger);
-        sale.setLot_sproduct(lot);
-        sale.setDescription_sproduct(description);
-        sale.setTotal_sproduct(price_boneless * lot);
-        sale.setSales_id_sale(sale_id);
-        int r =csale.register(sale);
-        if (r==1) {
-            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+        //Double total = Double.parseDouble(price_alitas * lot);       
+        if (Additionalburger.equals("EXTRAS")) {
+            Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+            sale.setName_sproduct(typeburger);
+            sale.setLot_sproduct(lot);
+            sale.setDescription_sproduct(description);
+            sale.setTotal_sproduct(price_boneless * lot);
+            sale.setSales_id_sale(sale_id);
+            int r =csale.register(sale);
+            if (r==1) {
+                JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+            }else{
+                JOptionPane.showMessageDialog(frmsale, "Error");
+            }
         }else{
-            JOptionPane.showMessageDialog(frmsale, "Error");
-        }
+            Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+            sale.setName_sproduct(typeburger + Additionalburger);
+            sale.setLot_sproduct(lot);
+            sale.setDescription_sproduct(description);
+            sale.setTotal_sproduct((price_boneless * lot)+ priceAdditional);
+            sale.setSales_id_sale(sale_id);
+            int r =csale.register(sale);
+            if (r==1) {
+                JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+            }else{
+                JOptionPane.showMessageDialog(frmsale, "Error");
+            }
+        }       
     }
-    public void agregarPapas(){
-        
-        
+    public void agregarPapas(){       
         String typepotatoes = (String) frmsale.jcPotatoes.getSelectedItem();
         Double price_potatoes = csale.pricePotatoes(typepotatoes);
         Integer lot = (Integer) frmsale.jsLotPotatoes.getValue();
@@ -260,6 +295,25 @@ public class CtrlSale implements ActionListener {
             JOptionPane.showMessageDialog(frmsale, "Error");
         }
     }
+    public void agregarPapasExtra(){    
+        String name = "PAPAS EXTRA";
+        Double price = 10.0;
+        Integer lot = 1;
+        String description = "";
+        //Double total = Double.parseDouble(price_alitas * lot);
+        Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+        sale.setName_sproduct(name);
+        sale.setLot_sproduct(1);
+        sale.setDescription_sproduct(description);
+        sale.setTotal_sproduct(price);
+        sale.setSales_id_sale(sale_id);
+        int r =csale.register(sale);
+        if (r==1) {
+            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+        }else{
+            JOptionPane.showMessageDialog(frmsale, "Error");
+        }
+    }
     public void eliminar() {
         
         int id = Integer.parseInt(frmsale.txtNumOrder.getText());
@@ -267,4 +321,17 @@ public class CtrlSale implements ActionListener {
         JOptionPane.showMessageDialog(frmsale, "Productos eliminados");
         
     }
+    public void eliminarProducto() {
+        
+        int fila = frmsale.jSale.getSelectedRow();
+            
+            if (fila==1) {
+                JOptionPane.showMessageDialog(frmsale, "Debe seleccionar un registro");
+        } else {
+                int id = Integer.parseInt((String)frmsale.jSale.getValueAt(fila,2).toString());
+                csale.deleteProduct(id);
+                JOptionPane.showMessageDialog(frmsale, "Registro eliminado");
+        
+    }
+    } 
 }
