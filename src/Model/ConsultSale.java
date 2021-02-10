@@ -219,8 +219,26 @@ public class ConsultSale extends Conexion{
         } catch (Exception e) {
         }
     }
+    public int registerSale(sale_products sp){
+        String sql = "INSERT INTO sales (date_sale, total_sale,client_sale,id_sales_product) "
+                + "VALUES (?,?,?,?)";
+        
+        try { 
+            con=getConnection();
+            ps= con.prepareStatement(sql);
+            ps.setString(1, sp.getDate_sale());
+            ps.setDouble(2, sp.getTotal_sale());
+            ps.setString(3, sp.getClient_sale());
+            ps.setInt(4, sp.getId_sale_product());
+            ps.executeUpdate();
+            System.out.println(sql);
+        } catch (Exception e) {
+        }    
+        return 1;
+        
+    }
     public static void main(String[] args) {
-        ConsultSale c = new ConsultSale();
-        System.out.println(+c.totalPrice(908));
+//        ConsultSale c = new ConsultSale();
+//        System.out.println(c.registerSale(sp));
     }
 }

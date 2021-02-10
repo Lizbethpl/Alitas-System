@@ -7,8 +7,10 @@ package Controller;
 
 import Model.CargarComboCategory;
 import Model.ConsultSale;
+import Model.DateSys;
 import Model.Products;
 import Model.Sale;
+import Model.sale_products;
 import View.Menufrm;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -30,7 +32,8 @@ public class CtrlSale implements ActionListener {
     ConsultSale csale= new ConsultSale();
     Menufrm frmsale = new Menufrm();
     DefaultTableModel modelo = new DefaultTableModel(); 
-   
+    sale_products salep = new sale_products();
+    DateSys date= new DateSys();
     public CtrlSale(Sale sale, ConsultSale csale, Menufrm frmsale,DefaultTableModel modelo) {
         this.sale= sale;
         this.frmsale=frmsale;
@@ -47,6 +50,7 @@ public class CtrlSale implements ActionListener {
         this.frmsale.btnAddPotatoesAdditional.addActionListener(this);
         this.frmsale.btnAddPotatoesBurguer.addActionListener(this);
         this.frmsale.btnDeleteProduct.addActionListener(this);
+        this.frmsale.btnPagar.addActionListener(this);
         //listar(frmsale.jSale);
         frmsale.jSale.getColumnModel().getColumn(2).setMaxWidth(0);
         frmsale.jSale.getColumnModel().getColumn(2).setMinWidth(0);
@@ -115,6 +119,9 @@ public class CtrlSale implements ActionListener {
             agregarPapasExtra();
             limpiarTabla();
             listar(frmsale.jSale);
+        }
+        if (e.getSource()== frmsale.btnPagar) {
+            agregarVentaProducto();
         }
     }
     void limpiarTabla() {
@@ -333,5 +340,24 @@ public class CtrlSale implements ActionListener {
                 JOptionPane.showMessageDialog(frmsale, "Registro eliminado");
         
     }
-    } 
+    }
+    public void agregarVentaProducto(){
+     
+        String fecha = (date.getDateSys());
+        Double total = Double.parseDouble(frmsale.txtTotalPrice.getText());
+        String cliente = frmsale.txtNameClient.getText();
+        Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+        
+        salep.setDate_sale(fecha);
+        salep.setTotal_sale(total);
+        salep.setClient_sale(cliente);
+        salep.setId_sale_product(sale_id);
+        
+        int r =csale.registerSale(salep);
+        if (r==1) {
+            JOptionPane.showMessageDialog(frmsale, "Venta agregada!");
+        }else{
+            JOptionPane.showMessageDialog(frmsale, "Error");
+        }
+    }
 }
