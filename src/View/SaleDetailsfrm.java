@@ -216,7 +216,7 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
         ConsultSale csale= new ConsultSale();
     SaleDetailsfrm frmsaledetails = new SaleDetailsfrm();
     sale_products salep = new sale_products();
-    DateSys date= new DateSys();
+    
     Menufrm frmsale = new Menufrm();
         CtrlSaleDetails con = new CtrlSaleDetails(csale, frmsaledetails, salep, frmsale);
         frmsaledetails.setVisible(true);

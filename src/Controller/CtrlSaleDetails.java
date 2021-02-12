@@ -51,8 +51,5 @@ public final class CtrlSaleDetails {
 //        }
 //        frmsale.jSale.setModel(modelo);
     }
-    public static void main(String[] args) {
-        
-        ;
-    }
+ 
 }
