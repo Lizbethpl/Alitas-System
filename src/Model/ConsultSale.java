@@ -237,8 +237,29 @@ public class ConsultSale extends Conexion{
         return 1;
         
     }
+    public List ListarVentaDetalle (int id){
+        
+        List <sale_products> datos = new ArrayList<>();
+        String sql = "select client_sale, total_sale from sales where id_sales_product="+id;
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                sale_products salep = new sale_products();
+                salep.setClient_sale(rs.getString(1));
+                salep.setTotal_sale(rs.getDouble(2));
+                
+                datos.add(salep);
+                System.out.println(datos);
+            }
+            
+        } catch (Exception e) {
+        }
+        return datos;
+        
+    }
     public static void main(String[] args) {
-//        ConsultSale c = new ConsultSale();
-//        System.out.println(c.registerSale(sp));
+        ConsultSale c = new ConsultSale();
+        System.out.println(c.ListarVentaDetalle(10));
     }
 }
