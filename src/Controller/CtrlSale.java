@@ -130,6 +130,12 @@ public class CtrlSale implements ActionListener {
             i=i-1;
         }
     }
+//    void limpiarTabla() {
+//        for (int i = 0; i < frmsale.jSale.getRowCount(); i++) {
+//            modelo.removeRow(i);
+//            i=i-1;
+//        }
+//    }
     void limpiarCajas(){
         frmsale.jcFlavorsAlitas.setSelectedIndex(0);
         frmsale.jSpLotAlitas.setValue(0);
