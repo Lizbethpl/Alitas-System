@@ -5,7 +5,9 @@
  */
 package View;
 
+import Controller.CtrlPrincipal;
 import Controller.CtrlSale;
+import Controller.CtrlSaleDetails;
 import Controller.CtrlUser;
 import Model.CargarComboCategory;
 import Model.ConsultSale;
@@ -61,7 +63,7 @@ public class Menufrm extends javax.swing.JFrame {
 //        jSale.getColumnModel().getColumn(2).setMinWidth(0);
 //        jSale.getColumnModel().getColumn(2).setPreferredWidth(0);
     }
-    
+    public static String id = "";
     
     
     
@@ -1237,8 +1239,12 @@ public class Menufrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Esperalo pronto.");
+        
+        id = txtNumOrder.getText();
+        CtrlPrincipal principal = new CtrlPrincipal();
+        principal.SaleDetails();
+        principal.SaleDetails();
+        this.dispose();
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void btnDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProductActionPerformed

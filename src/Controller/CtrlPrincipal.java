@@ -17,7 +17,10 @@ import View.frmUsers;
 import javax.swing.table.DefaultTableModel;
 import Model.Package;
 import Model.Sale;
+import Model.sale_products;
 import View.Menufrm;
+import View.SaleDetailsfrm;
+import javax.swing.DefaultListModel;
 
 public class CtrlPrincipal {
     /*User modUs;
@@ -47,6 +50,9 @@ public class CtrlPrincipal {
     ConsultSale csale = new ConsultSale();
     DefaultTableModel modelos = new DefaultTableModel();
     
+    sale_products salep = new sale_products();
+    SaleDetailsfrm frmsaledetails = new SaleDetailsfrm();
+    DefaultListModel modelolist = new DefaultListModel();
     
     public void Login(){
         CtrlLogin ctrl = new CtrlLogin(modUs, modLog, frmLog);
@@ -84,6 +90,11 @@ public class CtrlPrincipal {
         CtrlSale con = new CtrlSale(sale,csale,frmsale,modelos);
         frmsale.setVisible(true);
         frmsale.setLocationRelativeTo(null);
+    }
+    public void SaleDetails(){      
+        CtrlSaleDetails con = new CtrlSaleDetails(csale, frmsaledetails, salep,modelolist);
+        frmsaledetails.setVisible(true);
+        frmsaledetails.setLocationRelativeTo(null);
     }
     
     

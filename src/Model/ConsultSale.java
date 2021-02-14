@@ -258,6 +258,25 @@ public class ConsultSale extends Conexion{
         return datos;
         
     }
+    public List ListarVentaProducto (int id){
+        
+        List <Sale> datos = new ArrayList<>();
+        String sql = "SELECT name_sproduct, total_sproduct FROM sales_product where sales_id_sale="+id;
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                Sale sale = new Sale();
+                sale.setName_sproduct(rs.getString(1));
+                sale.setTotal_sproduct(rs.getDouble(2));
+                datos.add(sale);
+            }
+            
+        } catch (Exception e) {
+        }
+        return datos;
+        
+    }
     public static void main(String[] args) {
         ConsultSale c = new ConsultSale();
         System.out.println(c.ListarVentaDetalle(10));

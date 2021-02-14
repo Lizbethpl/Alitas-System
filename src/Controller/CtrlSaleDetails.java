@@ -12,7 +12,9 @@ import Model.sale_products;
 import View.Menufrm;
 import View.SaleDetailsfrm;
 import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,29 +29,46 @@ public final class CtrlSaleDetails {
     sale_products salep = new sale_products();
     DateSys date= new DateSys();
     Menufrm frmsale = new Menufrm();
-    public CtrlSaleDetails(ConsultSale csale, SaleDetailsfrm frmsaledetails, sale_products salep, Menufrm frmsale) {
+    DefaultListModel modelo = new DefaultListModel(); 
+    Sale sale = new Sale();
+    public CtrlSaleDetails(ConsultSale csale, SaleDetailsfrm frmsaledetails, sale_products salep,DefaultListModel modelo) {
         this.salep= salep;
         this.frmsaledetails=frmsaledetails;
         this.csale= csale;
         this.frmsale=frmsale;
-        listar();
+        this.modelo=modelo;
+        listarVenta();
+        listarVentaProducto(frmsaledetails.jlistProducts);
     }
-    public void listar(){
-        //int id = Integer.parseInt(frmsale.txtNumOrder.getText());
+    public void listarVenta(){
+        //Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+//        int id=0;
+//        id = Integer.parseInt(frmsaledetails.jlOrder.getText());
 //        modelo=(DefaultTableModel)tabla.getModel();
-        List <sale_products> lista = csale.ListarVentaDetalle(10);
+        int id = Integer.parseInt(frmsaledetails.jlOrder.getText());
+        List <sale_products> lista = csale.ListarVentaDetalle(id);
         
         String nombre = lista.get(0).getClient_sale();
-        frmsaledetails.jLabel8.setText(nombre);
-        frmsaledetails.jLabel9.setText("ID: " + lista.get(0).getTotal_sale());
-//        Object [] object = new Object[3];
-//        for (int i = 0; i < lista.size(); i++) {
-//            object[0]= lista.get(i).getName_sproduct();
-//            object[1]= lista.get(i).getTotal_sproduct();
-//            object[2]= lista.get(i).getId();
-//            modelo.addRow(object);
-//        }
-//        frmsale.jSale.setModel(modelo);
+        frmsaledetails.jlClient.setText(nombre);
+        frmsaledetails.jlPrice.setText("" +lista.get(0).getTotal_sale());
+    }
+    
+    public void listarVentaProducto(JList listaP){
+//        int id=0;
+          int id = Integer.parseInt(frmsaledetails.jlOrder.getText());
+//        modelo=(DefaultTableModel)tabla.getModel();
+        
+        
+        DefaultListModel listModel = new DefaultListModel();
+        List <Sale> lista = csale.ListarVentaProducto(id);
+        
+        for (int i = 0; i < lista.size(); i++) {
+            listModel.addElement(lista.get(i).getName_sproduct()+"  "+ lista.get(i).getTotal_sproduct());
+        }
+        
+        //listModel.addElement(lista.get(0).getTotal_sproduct());
+        
+        frmsaledetails.jlistProducts.setModel(listModel);
     }
  
 }
