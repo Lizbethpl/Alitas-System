@@ -224,6 +224,8 @@ public class Menufrm extends javax.swing.JFrame {
 
         jLabel4.setText("No. Orden");
 
+        txtNumOrder.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(

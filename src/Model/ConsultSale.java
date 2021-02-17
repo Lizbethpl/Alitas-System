@@ -295,6 +295,26 @@ public class ConsultSale extends Conexion{
         return datos;
         
     }
+    public List ListarOrden (){
+        
+        List <Sale> datos = new ArrayList<>();
+        String sql = "SELECT sales_id_sale FROM sales_product ORDER by sales_id_sale DESC LIMIT 1";
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                Sale sale = new Sale();
+                sale.setSales_id_sale(rs.getInt(1));
+                
+                datos.add(sale);
+                System.out.println(datos);
+            }
+            
+        } catch (Exception e) {
+        }
+        return datos;
+        
+    }
     public static void main(String[] args) {
         ConsultSale c = new ConsultSale();
         System.out.println(c.ListarVentaDetalle(10));

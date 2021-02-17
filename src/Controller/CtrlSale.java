@@ -53,6 +53,7 @@ public class CtrlSale implements ActionListener {
         this.frmsale.btnAddPackages.addActionListener(this);
         this.frmsale.btnPagar.addActionListener(this);
         //listar(frmsale.jSale);
+        listarOrden();
         frmsale.jSale.getColumnModel().getColumn(2).setMaxWidth(0);
         frmsale.jSale.getColumnModel().getColumn(2).setMinWidth(0);
         frmsale.jSale.getColumnModel().getColumn(2).setPreferredWidth(0);
@@ -395,5 +396,12 @@ public class CtrlSale implements ActionListener {
         }else{
             JOptionPane.showMessageDialog(frmsale, "Error");
         }
+    }
+    public void listarOrden(){
+ 
+        List <Sale> lista = csale.ListarOrden();
+        int orden = lista.get(0).getSales_id_sale();
+        orden = orden + 1;
+        frmsale.txtNumOrder.setText(String.valueOf(orden));
     }
 }
