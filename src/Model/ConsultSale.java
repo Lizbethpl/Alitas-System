@@ -183,6 +183,24 @@ public class ConsultSale extends Conexion{
         }
         return price_Additional;
      }
+    public double pricePackages(String Packages) {
+        double price_Packages  =0;
+        try {
+            
+            ResultSet res;
+            
+            String sql=("select price_package from packages where name_package ='"+Packages+"'");
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();   
+            rs.next();
+            price_Packages = rs.getInt("price_package");
+
+              con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return price_Packages;
+     }
     public double totalPrice(int id) {
         double totalPrice  =0;
         try {

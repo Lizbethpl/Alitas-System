@@ -55,6 +55,7 @@ public class Menufrm extends javax.swing.JFrame {
             comb.consultDrinks(jcDrinks);
             comb.consultDesserts(jcDesserts);
             comb.consultAdditional(jcAdditionalBurguer);
+            comb.consultPackages(jcPackages);
         } catch (SQLException ex) {
             Logger.getLogger(Productsfrm.class.getName()).log(Level.SEVERE, null, ex);
         
@@ -528,8 +529,6 @@ public class Menufrm extends javax.swing.JFrame {
         btnAddPotatoes.setForeground(new java.awt.Color(255, 255, 255));
         btnAddPotatoes.setText("AÑADIR");
 
-        jcAdditionalBurguer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EXTRAS" }));
-
         btnAddPotatoesBurguer.setText("Agregar papas");
         btnAddPotatoesBurguer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -810,10 +809,10 @@ public class Menufrm extends javax.swing.JFrame {
         jTabbedPane1.addTab("BEBIDAS Y POSTRES", jPanel4);
 
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bebidas.png"))); // NOI18N
-        jLabel35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(164, 196, 115)));
+        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/packages.png"))); // NOI18N
+        jLabel35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 144, 38)));
 
-        jPanel13.setBackground(new java.awt.Color(164, 196, 115));
+        jPanel13.setBackground(new java.awt.Color(240, 144, 38));
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
@@ -842,7 +841,7 @@ public class Menufrm extends javax.swing.JFrame {
 
         jLabel40.setText("CANTIDAD:");
 
-        btnAddPackages.setBackground(new java.awt.Color(164, 196, 115));
+        btnAddPackages.setBackground(new java.awt.Color(240, 144, 38));
         btnAddPackages.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnAddPackages.setForeground(new java.awt.Color(255, 255, 255));
         btnAddPackages.setText("AÑADIR");
