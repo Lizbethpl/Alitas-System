@@ -36,6 +36,17 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
         lblTime.setText(time());
         Menufrm v = new Menufrm();
        jlOrder.setText(v.id);
+       btnReimprimir.setVisible(false);
+       jlReimprimir1.setVisible(false);
+       jpReimprimir1.setVisible(false);
+       jlRealizada.setVisible(false);
+       jlRealizado.setVisible(false);
+       jpRealizado.setVisible(false);
+       jlCancelada.setVisible(false);
+       jlCancelado.setVisible(false);
+       jpCancelado.setVisible(false);
+       btnCerrar.setVisible(false);
+       
     }
 
     /**
@@ -65,8 +76,18 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
         jlClient = new javax.swing.JLabel();
         jlPrice = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnRealizar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnReimprimir = new javax.swing.JButton();
+        jpRealizado = new javax.swing.JPanel();
+        jlRealizada = new javax.swing.JLabel();
+        jpReimprimir1 = new javax.swing.JPanel();
+        jlReimprimir1 = new javax.swing.JLabel();
+        jlRealizado = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JButton();
+        jlCancelado = new javax.swing.JLabel();
+        jpCancelado = new javax.swing.JPanel();
+        jlCancelada = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -88,7 +109,7 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDateTimeLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 773, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 661, Short.MAX_VALUE)
                 .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -192,25 +213,116 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
                 .addContainerGap(59, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(54, 180, 54));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Realizar Venta ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRealizar.setBackground(new java.awt.Color(54, 180, 54));
+        btnRealizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRealizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRealizar.setText("Realizar Venta ");
+        btnRealizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRealizarActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(217, 14, 36));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Cancelar Venta");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setBackground(new java.awt.Color(217, 14, 36));
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("Cancelar Venta");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
+
+        btnReimprimir.setBackground(new java.awt.Color(255, 255, 255));
+        btnReimprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/imprimir.png"))); // NOI18N
+        btnReimprimir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jpRealizado.setBackground(new java.awt.Color(95, 201, 104));
+
+        jlRealizada.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlRealizada.setForeground(new java.awt.Color(255, 255, 255));
+        jlRealizada.setText("REALIZADA");
+
+        javax.swing.GroupLayout jpRealizadoLayout = new javax.swing.GroupLayout(jpRealizado);
+        jpRealizado.setLayout(jpRealizadoLayout);
+        jpRealizadoLayout.setHorizontalGroup(
+            jpRealizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpRealizadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlRealizada)
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        jpRealizadoLayout.setVerticalGroup(
+            jpRealizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpRealizadoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlRealizada)
+                .addContainerGap())
+        );
+
+        jpReimprimir1.setBackground(new java.awt.Color(41, 117, 244));
+
+        jlReimprimir1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlReimprimir1.setForeground(new java.awt.Color(255, 255, 255));
+        jlReimprimir1.setText("REIMPRIMIR");
+
+        javax.swing.GroupLayout jpReimprimir1Layout = new javax.swing.GroupLayout(jpReimprimir1);
+        jpReimprimir1.setLayout(jpReimprimir1Layout);
+        jpReimprimir1Layout.setHorizontalGroup(
+            jpReimprimir1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpReimprimir1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlReimprimir1)
+                .addContainerGap())
+        );
+        jpReimprimir1Layout.setVerticalGroup(
+            jpReimprimir1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpReimprimir1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlReimprimir1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jlRealizado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlRealizado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/realizado.png"))); // NOI18N
+        jlRealizado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(95, 201, 104)));
+
+        btnCerrar.setBackground(new java.awt.Color(217, 14, 36));
+        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+
+        jlCancelado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCancelado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancelar.png"))); // NOI18N
+        jlCancelado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 14, 35)));
+
+        jpCancelado.setBackground(new java.awt.Color(217, 14, 35));
+
+        jlCancelada.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlCancelada.setForeground(new java.awt.Color(255, 255, 255));
+        jlCancelada.setText("CANCELADA");
+
+        javax.swing.GroupLayout jpCanceladoLayout = new javax.swing.GroupLayout(jpCancelado);
+        jpCancelado.setLayout(jpCanceladoLayout);
+        jpCanceladoLayout.setHorizontalGroup(
+            jpCanceladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCanceladoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlCancelada)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jpCanceladoLayout.setVerticalGroup(
+            jpCanceladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCanceladoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlCancelada)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,38 +334,88 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRealizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlCancelado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jpCancelado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(47, 47, 47))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jpReimprimir1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnReimprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jlRealizado, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jpRealizado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PanelDateTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRealizar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlRealizado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnReimprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpReimprimir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(jpRealizado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(340, Short.MAX_VALUE))
+                        .addComponent(jlCancelado, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jpCancelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Esperalo pronto");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarActionPerformed
+        btnReimprimir.setVisible(true);
+       jlReimprimir1.setVisible(true);
+       jpReimprimir1.setVisible(true);
+       jlRealizada.setVisible(true);
+       jlRealizado.setVisible(true);
+       jpRealizado.setVisible(true);
+       btnCancelar.setVisible(false);
+       btnCerrar.setVisible(true);
+       btnRealizar.setVisible(false);
+    }//GEN-LAST:event_btnRealizarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        jlCancelada.setVisible(true);
+       jlCancelado.setVisible(true);
+       jpCancelado.setVisible(true);
+       btnCerrar.setVisible(true);
+       btnRealizar.setVisible(false);
+       btnCancelar.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Esperalo pronto");
-    }//GEN-LAST:event_jButton2ActionPerformed
+        CtrlPrincipal principal = new CtrlPrincipal();
+        principal.Sale();
+        this.dispose();
+        
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,10 +450,12 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelDateTime;
+    public javax.swing.JButton btnCancelar;
+    public javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnRealizar;
+    public javax.swing.JButton btnReimprimir;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -301,10 +465,18 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JLabel jlCancelada;
+    public javax.swing.JLabel jlCancelado;
     public javax.swing.JLabel jlClient;
     public javax.swing.JLabel jlOrder;
     public javax.swing.JLabel jlPrice;
+    public javax.swing.JLabel jlRealizada;
+    public javax.swing.JLabel jlRealizado;
+    public javax.swing.JLabel jlReimprimir1;
     public javax.swing.JList<String> jlistProducts;
+    public javax.swing.JPanel jpCancelado;
+    public javax.swing.JPanel jpRealizado;
+    public javax.swing.JPanel jpReimprimir1;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblTime;
     // End of variables declaration//GEN-END:variables
