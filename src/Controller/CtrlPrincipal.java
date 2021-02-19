@@ -20,6 +20,7 @@ import Model.Sale;
 import Model.sale_products;
 import View.Menufrm;
 import View.SaleDetailsfrm;
+import View.SalesMenufrm;
 
 import javax.swing.DefaultListModel;
 
@@ -98,7 +99,11 @@ public class CtrlPrincipal {
         frmsaledetails.setVisible(true);
         frmsaledetails.setLocationRelativeTo(null);
     }
-    
+    public void SalesMenu(){
+        SalesMenufrm v = new SalesMenufrm();
+        v.setVisible(true);
+        v.setLocationRelativeTo(null);
+    }
     
     
     
