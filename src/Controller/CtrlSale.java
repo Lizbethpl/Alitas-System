@@ -15,7 +15,6 @@ import View.Menufrm;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -35,15 +34,6 @@ public class CtrlSale implements ActionListener {
     DefaultTableModel modelo = new DefaultTableModel(); 
     sale_products salep = new sale_products();
     DateSys date= new DateSys();
-    String printData = "";
-    String printPrice = "";
-    String valueFinal;
-    List myList = new ArrayList();
-    List mySecondList = new ArrayList();
-    
-    
-    List myListP = new ArrayList();
-    List mySecondListP = new ArrayList();
     public CtrlSale(Sale sale, ConsultSale csale, Menufrm frmsale,DefaultTableModel modelo) {
         this.sale= sale;
         this.frmsale=frmsale;
@@ -60,8 +50,10 @@ public class CtrlSale implements ActionListener {
         this.frmsale.btnAddPotatoesAdditional.addActionListener(this);
         this.frmsale.btnAddPotatoesBurguer.addActionListener(this);
         this.frmsale.btnDeleteProduct.addActionListener(this);
+        this.frmsale.btnAddPackages.addActionListener(this);
         this.frmsale.btnPagar.addActionListener(this);
         //listar(frmsale.jSale);
+        listarOrden();
         frmsale.jSale.getColumnModel().getColumn(2).setMaxWidth(0);
         frmsale.jSale.getColumnModel().getColumn(2).setMinWidth(0);
         frmsale.jSale.getColumnModel().getColumn(2).setPreferredWidth(0);
@@ -130,6 +122,11 @@ public class CtrlSale implements ActionListener {
             limpiarTabla();
             listar(frmsale.jSale);
         }
+        if (e.getSource()== frmsale.btnAddPackages) {
+            agregarPackages();
+            limpiarTabla();
+            listar(frmsale.jSale);
+        }
         if (e.getSource()== frmsale.btnPagar) {
             agregarVentaProducto();
         }
@@ -140,6 +137,12 @@ public class CtrlSale implements ActionListener {
             i=i-1;
         }
     }
+//    void limpiarTabla() {
+//        for (int i = 0; i < frmsale.jSale.getRowCount(); i++) {
+//            modelo.removeRow(i);
+//            i=i-1;
+//        }
+//    }
     void limpiarCajas(){
         frmsale.jcFlavorsAlitas.setSelectedIndex(0);
         frmsale.jSpLotAlitas.setValue(0);
@@ -159,6 +162,9 @@ public class CtrlSale implements ActionListener {
         frmsale.jcDesserts.setSelectedIndex(0);
         frmsale.jSLotDesserts.setValue(0);
         frmsale.txtDescriptionDesserts.setText(null);
+        frmsale.jcPackages.setSelectedIndex(0);
+        frmsale.jSLotPackages.setValue(0);
+        frmsale.txtDescriptionPackages.setText(null);
         
         frmsale.txtTotalPrice.setText(null);
     }
@@ -175,67 +181,6 @@ public class CtrlSale implements ActionListener {
         }
         frmsale.jSale.setModel(modelo);
     }
-    
-    public void completeArray(List<String> lista){
-        
-        for (int i = 0; i < lista.size(); i++) {
-            if(lista.get(i).length() <= 22){
-                int result = 22 - lista.get(i).length();   
-                for(int x =0; result > x; x++){
-                printData += " ";               
-                }              
-            }     
-            //valueFinal += lista.get(i) + printData;           
-            myListP.add(lista.get(i) + printData);
-            valueFinal= "";
-            printData = "";
-        }     
-    }
-    
-    public String listDat(List<String> listas){       
-        String printDat = "";
-        int resulte = 0;
-        for (int i = 0; i < myListP.size(); i++) {
-            if(listas.get(i).length() < 7){
-                resulte = 7 - listas.get(i).length();            
-            }
-  
-            for(int x =0; resulte > 0; resulte--){
-                printDat += " ";
-            }
-            //valueFinal += carsNew.get(i) + "    " + printData + "$" + price.get(i) + "\n";         
-            mySecondListP.add(printDat + "$" + mySecondList.get(i));
-            printDat = "";           
-        }
-        
-        System.out.println(valueFinal.length());
-        
-        
-        return valueFinal;
-    }
-    
-    public void listData(){
-        int id = Integer.parseInt(frmsale.txtNumOrder.getText());
-            List <Sale> lista = csale.Listar(id);
-            
-            
-            for (int i = 0; i < lista.size(); i++) {
-                myList.add(lista.get(i).getName_sproduct());
-                mySecondList.add(Double.toString(lista.get(i).getTotal_sproduct()));
-            }
-            
-            completeArray(myList);
-            listDat(mySecondList);
-            System.out.println(myListP);
-            System.out.println(mySecondListP);
-            for (int i = 0; i < lista.size(); i++) {
-                printData += myListP.get(i) +""+ mySecondListP.get(i) +"\n";
-                
-            }    
-    }
-    
-    
-    
     public void agregar(){
         Double price_alitas = csale.priceAlitas();
         String flavor = (String) frmsale.jcFlavorsAlitas.getSelectedItem();
@@ -243,14 +188,14 @@ public class CtrlSale implements ActionListener {
         String description = frmsale.txtDescriptionAlitas.getText();
         //Double total = Double.parseDouble(price_alitas * lot);
         Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
-        sale.setName_sproduct("Alitas " + flavor);
+        sale.setName_sproduct("ALITAS " + flavor);
         sale.setLot_sproduct(lot);
         sale.setDescription_sproduct(description);
         sale.setTotal_sproduct(price_alitas * lot);
         sale.setSales_id_sale(sale_id);
         int r =csale.register(sale);
         if (r==1) {
-            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");          
+            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
         }else{
             JOptionPane.showMessageDialog(frmsale, "Error");
         }
@@ -264,7 +209,7 @@ public class CtrlSale implements ActionListener {
         String description = frmsale.txtDescriptionBoneless.getText();
         //Double total = Double.parseDouble(price_alitas * lot);
         Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
-        sale.setName_sproduct("Boneless "+flavor);
+        sale.setName_sproduct("BONELESS "+flavor);
         sale.setLot_sproduct(lot);
         sale.setDescription_sproduct(description);
         sale.setTotal_sproduct(price_boneless * lot);
@@ -284,7 +229,7 @@ public class CtrlSale implements ActionListener {
         Integer lot = (Integer) frmsale.JSLotBurger.getValue();
         String description = frmsale.txtDescriptionBurger.getText();
         //Double total = Double.parseDouble(price_alitas * lot);       
-        if (Additionalburger.equals("Extras")) {
+        if (Additionalburger.equals("EXTRAS")) {
             Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
             sale.setName_sproduct(typeburger);
             sale.setLot_sproduct(lot);
@@ -373,8 +318,29 @@ public class CtrlSale implements ActionListener {
             JOptionPane.showMessageDialog(frmsale, "Error");
         }
     }
+    public void agregarPackages(){
+        
+        
+        String typePackages = (String) frmsale.jcPackages.getSelectedItem();
+        Double price_packages = csale.pricePackages(typePackages);
+        Integer lot = (Integer) frmsale.jSLotPackages.getValue();
+        String description = frmsale.txtDescriptionPackages.getText();
+        //Double total = Double.parseDouble(price_alitas * lot);
+        Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+        sale.setName_sproduct(typePackages);
+        sale.setLot_sproduct(lot);
+        sale.setDescription_sproduct(description);
+        sale.setTotal_sproduct(price_packages * lot);
+        sale.setSales_id_sale(sale_id);
+        int r =csale.register(sale);
+        if (r==1) {
+            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+        }else{
+            JOptionPane.showMessageDialog(frmsale, "Error");
+        }
+    }
     public void agregarPapasExtra(){    
-        String name = "Papas extras";
+        String name = "PAPAS EXTRA";
         Double price = 10.0;
         Integer lot = 1;
         String description = "";
@@ -403,14 +369,14 @@ public class CtrlSale implements ActionListener {
         
         int fila = frmsale.jSale.getSelectedRow();
             
-            if (fila==1) {
-                JOptionPane.showMessageDialog(frmsale, "Debe seleccionar un registro");
-        } else {
+//            if (fila==0) {
+//                JOptionPane.showMessageDialog(frmsale, "Debe seleccionar un registro");
+//        } else {
                 int id = Integer.parseInt((String)frmsale.jSale.getValueAt(fila,2).toString());
                 csale.deleteProduct(id);
                 JOptionPane.showMessageDialog(frmsale, "Registro eliminado");
         
-    }
+//    }
     }
     public void agregarVentaProducto(){
      
@@ -427,16 +393,15 @@ public class CtrlSale implements ActionListener {
         int r =csale.registerSale(salep);
         if (r==1) {
             JOptionPane.showMessageDialog(frmsale, "Venta agregada!");
-            listData();
-            myListP.removeAll(myList);
-            mySecondListP.removeAll(myList);
-            myList.removeAll(myList);
-            mySecondList.removeAll(myList);
-            CtrlTicket tick = new CtrlTicket("A LAS ALITAS",frmsale.txtNameClient.getText(),frmsale.txtNumOrder.getText(),date.getDateSys(),printData,
-                    frmsale.txtTotalPrice.getText(),"100","200");
-            tick.print();
         }else{
             JOptionPane.showMessageDialog(frmsale, "Error");
         }
+    }
+    public void listarOrden(){
+ 
+        List <Sale> lista = csale.ListarOrden();
+        int orden = lista.get(0).getSales_id_sale();
+        orden = orden + 1;
+        frmsale.txtNumOrder.setText(String.valueOf(orden));
     }
 }

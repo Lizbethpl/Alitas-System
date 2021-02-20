@@ -441,7 +441,7 @@ public class Productsfrm extends javax.swing.JFrame {
     private void btnSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalesActionPerformed
         // TODO add your handling code here:
         CtrlPrincipal principal = new CtrlPrincipal();
-        principal.Sale();
+        principal.SalesMenu();
         this.dispose();
     }//GEN-LAST:event_btnSalesActionPerformed
 
