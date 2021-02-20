@@ -406,7 +406,7 @@ public class Packagesfrm extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         CtrlPrincipal principal = new CtrlPrincipal();
-        principal.SalesMenu();
+        principal.Sale();
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 

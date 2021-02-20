@@ -602,11 +602,8 @@ public class frmUsers extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //JOptionPane.showMessageDialog(null,"Esperalo pronto");
-//        CtrlPrincipal principal = new CtrlPrincipal();
-//        principal.Sale();
-//        this.dispose();
         CtrlPrincipal principal = new CtrlPrincipal();
-        principal.SalesMenu();
+        principal.Sale();
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

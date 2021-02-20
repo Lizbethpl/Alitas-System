@@ -183,24 +183,6 @@ public class ConsultSale extends Conexion{
         }
         return price_Additional;
      }
-    public double pricePackages(String Packages) {
-        double price_Packages  =0;
-        try {
-            
-            ResultSet res;
-            
-            String sql=("select price_package from packages where name_package ='"+Packages+"'");
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();   
-            rs.next();
-            price_Packages = rs.getInt("price_package");
-
-              con.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        return price_Packages;
-     }
     public double totalPrice(int id) {
         double totalPrice  =0;
         try {
@@ -255,68 +237,8 @@ public class ConsultSale extends Conexion{
         return 1;
         
     }
-    public List ListarVentaDetalle (int id){
-        
-        List <sale_products> datos = new ArrayList<>();
-        String sql = "select client_sale, total_sale from sales where id_sales_product="+id;
-        try {
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {                
-                sale_products salep = new sale_products();
-                salep.setClient_sale(rs.getString(1));
-                salep.setTotal_sale(rs.getDouble(2));
-                
-                datos.add(salep);
-                System.out.println(datos);
-            }
-            
-        } catch (Exception e) {
-        }
-        return datos;
-        
-    }
-    public List ListarVentaProducto (int id){
-        
-        List <Sale> datos = new ArrayList<>();
-        String sql = "SELECT name_sproduct, total_sproduct FROM sales_product where sales_id_sale="+id;
-        try {
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {                
-                Sale sale = new Sale();
-                sale.setName_sproduct(rs.getString(1));
-                sale.setTotal_sproduct(rs.getDouble(2));
-                datos.add(sale);
-            }
-            
-        } catch (Exception e) {
-        }
-        return datos;
-        
-    }
-    public List ListarOrden (){
-        
-        List <Sale> datos = new ArrayList<>();
-        String sql = "SELECT sales_id_sale FROM sales_product ORDER by sales_id_sale DESC LIMIT 1";
-        try {
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {                
-                Sale sale = new Sale();
-                sale.setSales_id_sale(rs.getInt(1));
-                
-                datos.add(sale);
-                System.out.println(datos);
-            }
-            
-        } catch (Exception e) {
-        }
-        return datos;
-        
-    }
     public static void main(String[] args) {
-        ConsultSale c = new ConsultSale();
-        System.out.println(c.ListarVentaDetalle(10));
+//        ConsultSale c = new ConsultSale();
+//        System.out.println(c.registerSale(sp));
     }
 }

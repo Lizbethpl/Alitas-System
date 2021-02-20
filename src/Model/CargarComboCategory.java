@@ -158,24 +158,4 @@ public class CargarComboCategory extends Conexion{
             }
         }
     }
-     public void consultPackages(JComboBox cbxPackages) throws SQLException{
-        PreparedStatement ps = null;
-        Connection conn = getConnection();
-        String sql = "SELECT name_package FROM packages";
-        
-        try {
-            ps = conn.prepareStatement(sql);
-            ResultSet result = ps.executeQuery();
-            cbxPackages.addItem("PAQUETES");
-            while (result.next()) {                
-                cbxPackages.addItem(result.getString("name_package"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }finally{
-             if (conn!= null) {
-                 conn.close();
-            }
-        }
-    }
 }
