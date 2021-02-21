@@ -398,6 +398,8 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
        btnCancelar.setVisible(false);
        btnCerrar.setVisible(true);
        btnRealizar.setVisible(false);
+       CtrlPrincipal ctrPrin = new CtrlPrincipal();
+       ctrPrin.printTicket(Integer.parseInt(jlOrder.getText()));
     }//GEN-LAST:event_btnRealizarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -452,7 +454,7 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
     private javax.swing.JPanel PanelDateTime;
     public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnCerrar;
-    private javax.swing.JButton btnRealizar;
+    public javax.swing.JButton btnRealizar;
     public javax.swing.JButton btnReimprimir;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;

@@ -392,7 +392,7 @@ public class CtrlSale implements ActionListener {
         
         int r =csale.registerSale(salep);
         if (r==1) {
-            JOptionPane.showMessageDialog(frmsale, "Venta agregada!");
+            System.out.println("Venta agregada");
         }else{
             JOptionPane.showMessageDialog(frmsale, "Error");
         }

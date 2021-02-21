@@ -20,7 +20,7 @@ import Model.Sale;
 import Model.sale_products;
 import View.Menufrm;
 import View.SaleDetailsfrm;
-import View.SalesMenufrm;
+import View.frmTicketSave;
 
 import javax.swing.DefaultListModel;
 
@@ -55,6 +55,9 @@ public class CtrlPrincipal {
     sale_products salep = new sale_products();
     SaleDetailsfrm frmsaledetails = new SaleDetailsfrm();
     DefaultListModel modelolist = new DefaultListModel();
+    
+    DefaultTableModel modTicket = new DefaultTableModel();
+    frmTicketSave frmTicket = new frmTicketSave();
     
     
     public void Login(){
@@ -99,13 +102,11 @@ public class CtrlPrincipal {
         frmsaledetails.setVisible(true);
         frmsaledetails.setLocationRelativeTo(null);
     }
-    public void SalesMenu(){
-        SalesMenufrm v = new SalesMenufrm();
-        v.setVisible(true);
-        v.setLocationRelativeTo(null);
+    
+    public void printTicket(int numOrd){
+        CtrlTicket ctrlTick = new CtrlTicket(csale,salep,modTicket,numOrd);
+        ctrlTick.listData();
     }
-    
-    
     
     /*public void Package(){
         pack.setVisible(true);
@@ -115,8 +116,7 @@ public class CtrlPrincipal {
     public static void main(String[] args) {
         CtrlPrincipal principal = new CtrlPrincipal();
         principal.Login();
-               
-        
+            
     }
     
     
