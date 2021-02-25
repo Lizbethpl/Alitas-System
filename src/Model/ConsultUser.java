@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConsultUser extends Conexion {
-    Hash hash = new Hash();
     
     public List Listar (){
         PreparedStatement ps = null;

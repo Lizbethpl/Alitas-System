@@ -2,6 +2,7 @@
 package Controller;
 
 import Model.ConsultSale;
+import Model.DateSys;
 import Model.Sale;
 import Model.sale_products;
 import View.Menufrm;
@@ -11,14 +12,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
 public class CtrlTicket{
     private ConsultSale csale;
-    private sale_products salep;
     private DefaultTableModel modTicket;
-    int NumOrd;
+    DateSys dat = new DateSys();
+    int numOrd = 0;
+    public String numOrdS = "";
+    String clientName = "";
     String printData = "";
     String printPrice = "";
     String valueFinal;
@@ -26,14 +30,25 @@ public class CtrlTicket{
     List mySecondList = new ArrayList();
     List myListP = new ArrayList();
     List mySecondListP = new ArrayList();
+    //frmTicketSave frmTick = new frmTicketSave();
     
-    public CtrlTicket(ConsultSale csale,sale_products salep,DefaultTableModel modTicketn,int numOrd){
+    public CtrlTicket(ConsultSale csale,int numOrd, String clientName){
         this.csale = csale;
-        this.salep = salep;
         this.modTicket = modTicket;
-        this.NumOrd = numOrd;
-       
+        this.numOrd = numOrd;
+        this.clientName = clientName;
     } 
+    
+    public CtrlTicket (int numOrd,ConsultSale csale){
+        this.csale = csale;
+        this.numOrd = numOrd;     
+    }
+    
+    public void saveTicke(){
+       csale.InsertTick(numOrd, clientName);
+    }
+    
+    
     
     public void completeArray(List<String> lista){
         
@@ -74,13 +89,21 @@ public class CtrlTicket{
     }
     
     public void print(){
-        CtrlPrintTicket tick = new CtrlPrintTicket("A LAS ALITAS","Juan","Orden 13","18-02-2021",printData,
+        numOrdS = String.valueOf(numOrd);
+        CtrlPrintTicket tick = new CtrlPrintTicket("A LAS ALITAS",clientName,numOrdS,dat.getDateSys(),printData,
                     "3","100","200");
             tick.print();
+            saveTicke();
+    }
+    
+    public void printC(){
+        numOrdS = String.valueOf(numOrd);
+        CtrlPrintTicket tick = new CtrlPrintTicket(clientName,numOrdS,dat.getDateSys(),printData);
+            tick.printC();
     }
     
     public void listData(){
-        int id = NumOrd;
+        int id = numOrd;
             List <Sale> lista = csale.Listar(id);
             
             
@@ -98,5 +121,26 @@ public class CtrlTicket{
                 
             }
             print();
+    }  
+    
+    
+    public void listDataC(){
+        int id = numOrd;
+            List <Sale> lista = csale.Listar(id);
+            
+            
+            /*for (int i = 0; i < lista.size(); i++) {
+                myList.add(lista.get(i).getName_sproduct());
+                mySecondList.add(Double.toString(lista.get(i).getTotal_sproduct()));
+            }
+            
+            completeArray(myList);
+            listDat(mySecondList);
+            System.out.println(myListP);
+            System.out.println(mySecondListP);*/
+            for (int i = 0; i < lista.size(); i++) {
+                printData += lista.get(i) +"\n";                
+            }
+            printC();
     }  
 }

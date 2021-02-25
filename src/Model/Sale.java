@@ -17,6 +17,7 @@ public class Sale {
     private Double total_sproduct;
     private int sales_id_sale;
 
+
     public Sale() {
     }
 

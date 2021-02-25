@@ -8,6 +8,7 @@ package Model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -20,8 +21,47 @@ public class ConsultSale extends Conexion{
     PreparedStatement ps = null;
     ResultSet rs= null;
     Connection con = getConnection();
+    
+    public void InsertTick(int numOrd, String clientName){
+        String sql = "INSERT INTO ticketsave (sales_id_sale,client_sale) VALUES (?,?)";
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1,numOrd); 
+            ps.setString(2, clientName);
+            ps.execute();
+        }catch(SQLException e){ // si no se ejecuta manda exepciones
+            System.err.print( e);           
+        } finally{
+        try {
+            con.close();
+        }catch(SQLException e){
+            System.out.println( e);
+            }
+        } 
+        }
+    
+    public List ListUser (){
+    //public List ListUser (int id){
+         // clase necesarioa para hacer lista
+        List <sale_products> datos = new ArrayList<>(); // Lista tipo sale
+        //String sql = "SELECT * FROM ticketsave WHERE sales_id_sale ="+id;
+        String sql = "SELECT * FROM ticketsave";
+
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {  
+                sale_products salep = new sale_products();
+                salep.setId_sale_product(rs.getInt(1));
+                salep.setClient_sale(rs.getString(2)); 
+                datos.add(salep);
+            }
+        }catch (Exception e) {
+        }return datos;
+    }
+    
     public List Listar (int id){
-        
+ 
         List <Sale> datos = new ArrayList<>();
         String sql = "SELECT name_sproduct, total_sproduct,id_sproduct FROM sales_product where sales_id_sale="+id;
         try {

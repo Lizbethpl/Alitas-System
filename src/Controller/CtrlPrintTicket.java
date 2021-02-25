@@ -23,7 +23,7 @@ import javax.print.attribute.*;
 public class CtrlPrintTicket {
     Font font = new Font("MONOSPACED", Font.BOLD, 9);
     //Ticket attribute content
-    private String contentTicket = "             SNACKS \n "+
+    private String contentTicket = "            SNACKS \n "+
     "{{nameLocal}}\n" +    
     "Av. Zeus 300, Pachuca Hgo\n"+
     "Tel: 771 238 6930\n"+
@@ -44,6 +44,14 @@ public class CtrlPrintTicket {
     "\n"+
     "\n";
 
+    private String contentTicketC = 
+    "Nombre: {{clientName}}\n"+
+    "No. Orden: {{ordNum}}\n" +
+    "Hora de venta: {{dateTime}}\n"+
+    "=============================\n"+
+    "{{items}} \n";
+    
+    
   //El constructor que setea los valores a la instancia
   CtrlPrintTicket(String nameLocal, String clientName, String ordNum, String dateTime, String items, String total, String recibo, String change) {
     this.contentTicket = this.contentTicket.replace("{{nameLocal}}", String.format("%20s" , nameLocal));
@@ -54,6 +62,13 @@ public class CtrlPrintTicket {
     this.contentTicket = this.contentTicket.replace("{{total}}", total);
     this.contentTicket = this.contentTicket.replace("{{recibo}}", recibo);
     this.contentTicket = this.contentTicket.replace("{{change}}", change);
+  }
+  
+  CtrlPrintTicket(String clientName, String ordNum, String dateTime, String items) {
+    this.contentTicketC = this.contentTicketC.replace("{{clientName}}", clientName);
+    this.contentTicketC = this.contentTicketC.replace("{{ordNum}}", ordNum);
+    this.contentTicketC = this.contentTicketC.replace("{{dateTime}}", dateTime);
+    this.contentTicketC = this.contentTicketC.replace("{{items}}", items);
   }
     
   public void print() {
@@ -88,9 +103,35 @@ public class CtrlPrintTicket {
     //Creamos un trabajo de impresión
     DocPrintJob job = service.createPrintJob();
 
-    //Imprimimos dentro de un try de a huevo
+    //Imprimimos dentro de un try 
     try {
       //El metodo print imprime
+      job.print(doc, null);
+        System.out.println("impreso");
+    } catch (Exception er) {
+        JOptionPane.showMessageDialog(null,"Error al imprimir: " + er.getMessage());
+    }
+  }
+  
+ 
+  public void printC() {
+
+    DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
+   
+    PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
+    PrintService printService[] = PrintServiceLookup.lookupPrintServices(flavor, pras);
+    PrintService defaultService = PrintServiceLookup.lookupDefaultPrintService();
+    PrintService service = ServiceUI.printDialog(null, 700, 200, printService, defaultService, flavor, pras);
+
+    byte[] bytes;
+
+    bytes = this.contentTicketC.getBytes();
+
+    Doc doc = new SimpleDoc(bytes,flavor,null);
+
+    DocPrintJob job = service.createPrintJob();
+
+    try {
       job.print(doc, null);
         System.out.println("impreso");
     } catch (Exception er) {

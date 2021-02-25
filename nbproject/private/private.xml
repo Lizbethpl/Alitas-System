@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Pacman/Documents/NetbeansProjects/Alitas-System-Tree/src/View/SaleDetailsfrm.java</file>
+            <file>file:/Users/usuario/NetBeansProjects/Alitas-System/src/View/frmTicketSave.java</file>
+            <file>file:/Users/usuario/NetBeansProjects/Alitas-System/src/Controller/CtrlTicket.java</file>
+            <file>file:/Users/usuario/NetBeansProjects/Alitas-System/src/Controller/CtrlPrincipal.java</file>
         </group>
     </open-files>
 </project-private>

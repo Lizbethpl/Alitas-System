@@ -5,6 +5,8 @@
  */
 package View;
 
+import Controller.CtrlPrincipal;
+
 /**
  *
  * @author Pacman
@@ -16,6 +18,7 @@ public class frmTicketSave extends javax.swing.JFrame {
      */
     public frmTicketSave() {
         initComponents();
+        
     }
 
     /**
@@ -28,28 +31,40 @@ public class frmTicketSave extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtPaneName = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTicket = new javax.swing.JTable();
         btnPrint = new javax.swing.JButton();
+        txtNoClient = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane2.setViewportView(txtPaneName);
-
+        jTicket.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jTicket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Cliente", "No. Orden"
             }
         ));
+        jTicket.setToolTipText("");
+        jTicket.setRowHeight(50);
+        jTicket.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTicketMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTicket);
 
         btnPrint.setText("Imprimir");
         btnPrint.setActionCommand("");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+
+        txtNoClient.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,16 +74,19 @@ public class frmTicketSave extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(167, Short.MAX_VALUE)
+                .addComponent(txtNoClient)
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addComponent(txtNoClient, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -91,6 +109,21 @@ public class frmTicketSave extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+     public static int id;
+     public String clientName = "";
+     
+    private void jTicketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTicketMouseClicked
+        int fila = jTicket.getSelectedRow();
+        clientName = (String)jTicket.getValueAt(fila,0).toString();    
+        int id = Integer.parseInt((String)jTicket.getValueAt(fila,1).toString());
+        txtNoClient.setText(""+id);
+            
+    }//GEN-LAST:event_jTicketMouseClicked
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        CtrlPrincipal ctrPrin = new CtrlPrincipal();
+        ctrPrin.printTicketC(id, clientName);
+    }//GEN-LAST:event_btnPrintActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,9 +166,8 @@ public class frmTicketSave extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnPrint;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JTable jTicket;
-    public javax.swing.JTextPane txtPaneName;
+    private javax.swing.JLabel txtNoClient;
     // End of variables declaration//GEN-END:variables
 }

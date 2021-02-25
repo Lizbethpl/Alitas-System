@@ -399,7 +399,8 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
        btnCerrar.setVisible(true);
        btnRealizar.setVisible(false);
        CtrlPrincipal ctrPrin = new CtrlPrincipal();
-       ctrPrin.printTicket(Integer.parseInt(jlOrder.getText()));
+       //ctrPrin.printTicket(Integer.parseInt(jlOrder.getText()));
+       ctrPrin.printTicket(Integer.parseInt(jlOrder.getText()),jlClient.getText());
     }//GEN-LAST:event_btnRealizarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

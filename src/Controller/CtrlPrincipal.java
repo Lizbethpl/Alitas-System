@@ -60,6 +60,7 @@ public class CtrlPrincipal {
     frmTicketSave frmTicket = new frmTicketSave();
     
     
+    
     public void Login(){
         CtrlLogin ctrl = new CtrlLogin(modUs, modLog, frmLog);
         ctrl.iniciar();
@@ -103,10 +104,31 @@ public class CtrlPrincipal {
         frmsaledetails.setLocationRelativeTo(null);
     }
     
-    public void printTicket(int numOrd){
-        CtrlTicket ctrlTick = new CtrlTicket(csale,salep,modTicket,numOrd);
+    public void printTicket(int numOrd, String clientName){
+        CtrlTicket ctrlTick = new CtrlTicket(csale,numOrd, clientName);
         ctrlTick.listData();
+        //ctrlTick.saveTicke();
     }
+    
+    public void printTicketC(int numOrd, String clientName){
+        CtrlTicket ctrlTick = new CtrlTicket(csale,numOrd, clientName);
+        ctrlTick.listDataC();
+        //ctrlTick.saveTicke();
+    }
+    /*
+    public void InserTicket(int numOrd){
+        CtrlTicket ctrlTick = new CtrlTicket(numOrd,csale);
+        ctrlTick.saveTicket();
+    }*/
+    
+    public void saveTicket (){
+        CtrlTicketSaved ctrlTickS = new CtrlTicketSaved(csale,modTicket,frmTicket); 
+        ctrlTickS.listarTick();
+        frmTicket.setVisible(true);
+    }
+    
+    
+    
     
     /*public void Package(){
         pack.setVisible(true);
