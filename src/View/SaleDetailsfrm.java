@@ -389,7 +389,7 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarActionPerformed
-        btnReimprimir.setVisible(true);
+       btnReimprimir.setVisible(true);
        jlReimprimir1.setVisible(true);
        jpReimprimir1.setVisible(true);
        jlRealizada.setVisible(true);
@@ -399,8 +399,7 @@ public class SaleDetailsfrm extends javax.swing.JFrame {
        btnCerrar.setVisible(true);
        btnRealizar.setVisible(false);
        CtrlPrincipal ctrPrin = new CtrlPrincipal();
-       //ctrPrin.printTicket(Integer.parseInt(jlOrder.getText()));
-       ctrPrin.printTicket(Integer.parseInt(jlOrder.getText()),jlClient.getText());
+       ctrPrin.printTicketC(Integer.parseInt(jlOrder.getText()),jlClient.getText());
     }//GEN-LAST:event_btnRealizarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

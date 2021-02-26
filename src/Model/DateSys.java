@@ -3,6 +3,7 @@ package Model;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 
 
 public class DateSys{
@@ -16,5 +17,13 @@ public class DateSys{
     
     return dateFormat.format(date);
     } 
+    
+    public String getHourSys(){
+        String hour = "";
+   
+        hour +=  LocalDateTime.now().getHour() +":" + LocalDateTime.now().getMinute();
+        return hour;
+    }
+
     
 }

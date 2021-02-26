@@ -126,10 +126,7 @@ public class CtrlPrincipal {
         ctrlTickS.listarTick();
         frmTicket.setVisible(true);
     }
-    
-    
-    
-    
+ 
     /*public void Package(){
         pack.setVisible(true);
         pack.setLocationRelativeTo(pack);

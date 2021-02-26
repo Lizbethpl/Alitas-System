@@ -21,6 +21,7 @@ public class CtrlTicket{
     private DefaultTableModel modTicket;
     DateSys dat = new DateSys();
     int numOrd = 0;
+    String price = "";
     public String numOrdS = "";
     String clientName = "";
     String printData = "";
@@ -30,11 +31,11 @@ public class CtrlTicket{
     List mySecondList = new ArrayList();
     List myListP = new ArrayList();
     List mySecondListP = new ArrayList();
-    //frmTicketSave frmTick = new frmTicketSave();
+
     
     public CtrlTicket(ConsultSale csale,int numOrd, String clientName){
         this.csale = csale;
-        this.modTicket = modTicket;
+        //this.modTicket = modTicket;
         this.numOrd = numOrd;
         this.clientName = clientName;
     } 
@@ -66,7 +67,7 @@ public class CtrlTicket{
         }     
     }
     
-    public String listDat(List<String> listas){       
+    public void listDat(List<String> listas){       
         String printDat = "";
         int resulte = 0;
         for (int i = 0; i < myListP.size(); i++) {
@@ -80,32 +81,66 @@ public class CtrlTicket{
             //valueFinal += carsNew.get(i) + "    " + printData + "$" + price.get(i) + "\n";         
             mySecondListP.add(printDat + "$" + mySecondList.get(i));
             printDat = "";           
-        }
-        
-        System.out.println(valueFinal.length());
-        
-        
-        return valueFinal;
+        }   
+    }
+    
+    
+    public void listDats(List<String> listas){       
+        String printDat = "";
+        int resulte = 0;
+        for (int i = 0; i < myListP.size(); i++) {
+            if(listas.get(i).length() < 7){
+                resulte = 7 - listas.get(i).length();            
+            }
+  
+            for(int x =0; resulte > 0; resulte--){
+                printDat += " ";
+            }
+            //valueFinal += carsNew.get(i) + "    " + printData + "$" + price.get(i) + "\n";         
+            mySecondListP.add(printDat + "" + mySecondList.get(i));
+            printDat = "";           
+        }   
+    }
+    
+    
+    public void listData(List<String> listas){       
+        String printDat = "";
+        int resulte = 0;
+        for (int i = 0; i < myListP.size(); i++) {
+            if(listas.get(i).length() < 7){
+                resulte = 7 - listas.get(i).length();            
+            }
+  
+            for(int x =0; resulte > 0; resulte--){
+                printDat += " ";
+            }
+            //valueFinal += carsNew.get(i) + "    " + printData + "$" + price.get(i) + "\n";         
+            mySecondListP.add(printDat + "" + mySecondList.get(i));
+            printDat = "";           
+        }   
     }
     
     public void print(){
         numOrdS = String.valueOf(numOrd);
         CtrlPrintTicket tick = new CtrlPrintTicket("A LAS ALITAS",clientName,numOrdS,dat.getDateSys(),printData,
-                    "3","100","200");
-            tick.print();
-            saveTicke();
+                    price,"100","200");
+        tick.print();
+        
     }
     
     public void printC(){
         numOrdS = String.valueOf(numOrd);
-        CtrlPrintTicket tick = new CtrlPrintTicket(clientName,numOrdS,dat.getDateSys(),printData);
+        CtrlPrintTicket tick = new CtrlPrintTicket(clientName,numOrdS,dat.getHourSys(),printData);
             tick.printC();
+            saveTicke();
     }
     
     public void listData(){
         int id = numOrd;
             List <Sale> lista = csale.Listar(id);
             
+            List <sale_products> listaS = csale.ListarVentaDetalle(id);
+            price += "$"+String.valueOf(listaS.get(0).getTotal_sale());
             
             for (int i = 0; i < lista.size(); i++) {
                 myList.add(lista.get(i).getName_sproduct());
@@ -120,6 +155,7 @@ public class CtrlTicket{
                 printData += myListP.get(i) +""+ mySecondListP.get(i) +"\n";
                 
             }
+            
             print();
     }  
     
@@ -127,20 +163,19 @@ public class CtrlTicket{
     public void listDataC(){
         int id = numOrd;
             List <Sale> lista = csale.Listar(id);
-            
-            
-            /*for (int i = 0; i < lista.size(); i++) {
-                myList.add(lista.get(i).getName_sproduct());
-                mySecondList.add(Double.toString(lista.get(i).getTotal_sproduct()));
-            }
-            
-            completeArray(myList);
-            listDat(mySecondList);
-            System.out.println(myListP);
-            System.out.println(mySecondListP);*/
+                     
             for (int i = 0; i < lista.size(); i++) {
-                printData += lista.get(i) +"\n";                
+                myList.add(lista.get(i).getName_sproduct());
+                mySecondList.add(Integer.toString(lista.get(i).getLot_sproduct()));
             }
+           
+            completeArray(myList);
+            listDats(mySecondList);
+            System.out.println(myListP);
+            System.out.println(mySecondListP);
+            for (int i = 0; i < lista.size(); i++) {
+                printData += myListP.get(i) +""+ mySecondListP.get(i) +"\n";              
+            }   
             printC();
     }  
 }

@@ -20,7 +20,8 @@ public class frmTicketSave extends javax.swing.JFrame {
         initComponents();
         
     }
-
+    public static String clientName = "";
+    public static int id;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -109,20 +110,19 @@ public class frmTicketSave extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-     public static int id;
-     public String clientName = "";
+     
      
     private void jTicketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTicketMouseClicked
         int fila = jTicket.getSelectedRow();
         clientName = (String)jTicket.getValueAt(fila,0).toString();    
-        int id = Integer.parseInt((String)jTicket.getValueAt(fila,1).toString());
+        id = Integer.parseInt((String)jTicket.getValueAt(fila,1).toString());
         txtNoClient.setText(""+id);
             
     }//GEN-LAST:event_jTicketMouseClicked
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         CtrlPrincipal ctrPrin = new CtrlPrincipal();
-        ctrPrin.printTicketC(id, clientName);
+        ctrPrin.printTicket(id, clientName);
     }//GEN-LAST:event_btnPrintActionPerformed
 
     /**

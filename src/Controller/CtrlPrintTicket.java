@@ -34,7 +34,7 @@ public class CtrlPrintTicket {
     "=============================\n"+
     "{{items}} \n"+
     "=============================\n"+
-    "Total: {{total}}\n\n"+    
+    "               Total:{{total}}\n\n"+    
     "Recibido: {{recibo}}\n"+
     "Cambio: {{change}}\n\n"+
     "=============================\n"+
@@ -49,7 +49,7 @@ public class CtrlPrintTicket {
     "No. Orden: {{ordNum}}\n" +
     "Hora de venta: {{dateTime}}\n"+
     "=============================\n"+
-    "{{items}} \n";
+    "{{items}} \n\n\n";
     
     
   //El constructor que setea los valores a la instancia
@@ -93,7 +93,8 @@ public class CtrlPrintTicket {
     byte[] bytes;
 
     //Aca convertimos el string(cuerpo del ticket) a bytes tal como
-    //lo maneja la impresora(mas bien ticketera :p)
+    //lo maneja la impresora(mas bien ticketera :p) 
+
     bytes = this.contentTicket.getBytes();
 
     //Creamos un documento a imprimir, a el se le appendeara
@@ -107,7 +108,7 @@ public class CtrlPrintTicket {
     try {
       //El metodo print imprime
       job.print(doc, null);
-        System.out.println("impreso");
+
     } catch (Exception er) {
         JOptionPane.showMessageDialog(null,"Error al imprimir: " + er.getMessage());
     }
@@ -124,7 +125,6 @@ public class CtrlPrintTicket {
     PrintService service = ServiceUI.printDialog(null, 700, 200, printService, defaultService, flavor, pras);
 
     byte[] bytes;
-
     bytes = this.contentTicketC.getBytes();
 
     Doc doc = new SimpleDoc(bytes,flavor,null);
@@ -133,6 +133,7 @@ public class CtrlPrintTicket {
 
     try {
       job.print(doc, null);
+      
         System.out.println("impreso");
     } catch (Exception er) {
         JOptionPane.showMessageDialog(null,"Error al imprimir: " + er.getMessage());

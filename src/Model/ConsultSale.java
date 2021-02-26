@@ -63,7 +63,7 @@ public class ConsultSale extends Conexion{
     public List Listar (int id){
  
         List <Sale> datos = new ArrayList<>();
-        String sql = "SELECT name_sproduct, total_sproduct,id_sproduct FROM sales_product where sales_id_sale="+id;
+        String sql = "SELECT name_sproduct, total_sproduct,id_sproduct,lot_sproduct FROM sales_product where sales_id_sale="+id;
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -72,6 +72,7 @@ public class ConsultSale extends Conexion{
                 sale.setName_sproduct(rs.getString(1));
                 sale.setTotal_sproduct(rs.getDouble(2));
                 sale.setId(rs.getInt(3));
+                sale.setLot_sproduct(rs.getInt(4));
                 datos.add(sale);
             }
             
@@ -335,6 +336,7 @@ public class ConsultSale extends Conexion{
         return datos;
         
     }
+   
     public List ListarOrden (){
         
         List <Sale> datos = new ArrayList<>();

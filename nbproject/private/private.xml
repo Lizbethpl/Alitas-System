@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/usuario/NetBeansProjects/Alitas-System/src/View/frmTicketSave.java</file>
-            <file>file:/Users/usuario/NetBeansProjects/Alitas-System/src/Controller/CtrlTicket.java</file>
-            <file>file:/Users/usuario/NetBeansProjects/Alitas-System/src/Controller/CtrlPrincipal.java</file>
+            <file>file:/C:/Users/Pacman/Documents/NetbeansProjects/Alitas-System-master/src/Model/Sale.java</file>
+            <file>file:/C:/Users/Pacman/Documents/NetbeansProjects/Alitas-System-master/src/Controller/CtrlTicket.java</file>
+            <file>file:/C:/Users/Pacman/Documents/NetbeansProjects/Alitas-System-master/src/Controller/CtrlPrincipal.java</file>
+            <file>file:/C:/Users/Pacman/Documents/NetbeansProjects/Alitas-System-master/src/Controller/CtrlPrintTicket.java</file>
+            <file>file:/C:/Users/Pacman/Documents/NetbeansProjects/Alitas-System-master/src/View/SaleDetailsfrm.java</file>
+            <file>file:/C:/Users/Pacman/Documents/NetbeansProjects/Alitas-System-master/src/Model/ConsultSale.java</file>
         </group>
     </open-files>
 </project-private>
