@@ -54,12 +54,18 @@ public class CtrlTicket{
     public void completeArray(List<String> lista){
         
         for (int i = 0; i < lista.size(); i++) {
+            if(lista.get(i).length() > 22){
+                //lista.get(i).replace(lista.get(i).substring(0,23));
+                lista.set(i,lista.get(i).substring(0,22));
+            }
+            
             if(lista.get(i).length() <= 22){
                 int result = 22 - lista.get(i).length();   
                 for(int x =0; result > x; x++){
                 printData += " ";               
                 }              
-            }     
+            }
+
             //valueFinal += lista.get(i) + printData;           
             myListP.add(lista.get(i) + printData);
             valueFinal= "";
@@ -140,6 +146,7 @@ public class CtrlTicket{
             List <Sale> lista = csale.Listar(id);
             
             List <sale_products> listaS = csale.ListarVentaDetalle(id);
+            System.out.println(listaS);
             price += "$"+String.valueOf(listaS.get(0).getTotal_sale());
             
             for (int i = 0; i < lista.size(); i++) {

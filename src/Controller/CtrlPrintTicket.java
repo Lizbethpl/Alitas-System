@@ -94,7 +94,7 @@ public class CtrlPrintTicket {
 
     //Aca convertimos el string(cuerpo del ticket) a bytes tal como
     //lo maneja la impresora(mas bien ticketera :p) 
-
+    System.out.println(contentTicket);
     bytes = this.contentTicket.getBytes();
 
     //Creamos un documento a imprimir, a el se le appendeara
@@ -125,6 +125,9 @@ public class CtrlPrintTicket {
     PrintService service = ServiceUI.printDialog(null, 700, 200, printService, defaultService, flavor, pras);
 
     byte[] bytes;
+    
+    System.out.println(contentTicketC);
+    
     bytes = this.contentTicketC.getBytes();
 
     Doc doc = new SimpleDoc(bytes,flavor,null);

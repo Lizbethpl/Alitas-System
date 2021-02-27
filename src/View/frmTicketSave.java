@@ -122,7 +122,10 @@ public class frmTicketSave extends javax.swing.JFrame {
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         CtrlPrincipal ctrPrin = new CtrlPrincipal();
+        System.out.println("id "+ id);
+        System.out.println("cliente "+ clientName);
         ctrPrin.printTicket(id, clientName);
+
     }//GEN-LAST:event_btnPrintActionPerformed
 
     /**

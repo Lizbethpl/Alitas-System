@@ -115,7 +115,7 @@ public class CtrlPrincipal {
         ctrlTick.listDataC();
         //ctrlTick.saveTicke();
     }
-    /*
+    /*<
     public void InserTicket(int numOrd){
         CtrlTicket ctrlTick = new CtrlTicket(numOrd,csale);
         ctrlTick.saveTicket();
