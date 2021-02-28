@@ -1,6 +1,8 @@
 
 package Controller;
 
+import Model.Additional;
+import Model.ConsultAdditional;
 import Model.ConsultPackage;
 import Model.Package;
 import View.Packagesfrm;
@@ -21,16 +23,27 @@ public class CtrlPackage implements ActionListener{
     Packagesfrm vistapack = new Packagesfrm();
     DefaultTableModel modelo = new DefaultTableModel(); 
     
-    public CtrlPackage(Package pack,ConsultPackage cpack,Packagesfrm vistapack,DefaultTableModel modelo) {
+    Additional add = new Additional();
+    ConsultAdditional cadd= new ConsultAdditional();
+    DefaultTableModel modeloadd = new DefaultTableModel();
+    
+    public CtrlPackage(Package pack,ConsultPackage cpack,Packagesfrm vistapack,Additional add,ConsultAdditional cadd,DefaultTableModel modelo,DefaultTableModel modeloadd) {
         this.pack = pack;
         this.cpack = cpack;
         this.vistapack = vistapack;
+        this.add=add;
+        this.cadd= cadd;
         this.modelo = modelo;
+        this.modeloadd=modeloadd;
         
         this.vistapack.btnGuardar.addActionListener(this);
         this.vistapack.btnModificar.addActionListener(this);
         this.vistapack.btnEliminar.addActionListener(this);
+        this.vistapack.btnGuardarExtra.addActionListener(this);
+        this.vistapack.btnModificarExtra.addActionListener(this);
+        this.vistapack.btnEliminarExtra.addActionListener(this);
         listar(vistapack.jPackages);
+        listarAdditional(vistapack.jAdditional);
     }
     
     @Override
@@ -50,6 +63,21 @@ public class CtrlPackage implements ActionListener{
             limpiarTabla();
             listar(vistapack.jPackages); 
             limpiarCajas();
+        }if (e.getSource()== vistapack.btnGuardarExtra) {
+            agregarAdditional();
+            limpiarTablaAdd();
+            listarAdditional(vistapack.jAdditional); 
+            limpiarCajasAdd();
+        }if (e.getSource()== vistapack.btnModificarExtra) {
+            actualizarAdditional();
+            limpiarTablaAdd();
+            listarAdditional(vistapack.jAdditional); 
+            limpiarCajasAdd();
+        }if (e.getSource()== vistapack.btnEliminarExtra) {
+            eliminarAdditional();
+            limpiarTablaAdd();
+            listarAdditional(vistapack.jAdditional); 
+            limpiarCajasAdd();
         }
     }
     void limpiarTabla() {
@@ -64,6 +92,17 @@ public class CtrlPackage implements ActionListener{
         vistapack.txtProductsPackage.setText(null);
         vistapack.txtPricePackage.setText(null);
     }
+    void limpiarTablaAdd() {
+        for (int i = 0; i < vistapack.jAdditional.getRowCount(); i++) {
+            modeloadd.removeRow(i);
+            i=i-1;
+        }
+    }void limpiarCajasAdd(){
+        
+        vistapack.txtnameAdditional.setText(null);
+        vistapack.txtPriceAdditional.setText(null);
+    }
+    
     public void eliminar() {
         int fila = vistapack.jPackages.getSelectedRow();
             
@@ -119,5 +158,55 @@ public class CtrlPackage implements ActionListener{
             modelo.addRow(object);
         }
         vistapack.jPackages.setModel(modelo);
+    }
+    
+    public void listarAdditional(JTable tabla){
+        modeloadd=(DefaultTableModel)tabla.getModel();
+        List <Additional> lista = cadd.Listar();
+        Object [] object = new Object[3];
+        for (int i = 0; i < lista.size(); i++) {
+            
+            object[0]= lista.get(i).getId_additional();
+            object[1]= lista.get(i).getName_additional();
+            object[2]= lista.get(i).getPrice_additional();
+            
+            modeloadd.addRow(object);
+        }
+        vistapack.jAdditional.setModel(modeloadd);
+    }
+    public void agregarAdditional(){
+        String name = vistapack.txtnameAdditional.getText();
+        
+        Double price = Double.parseDouble(vistapack.txtPriceAdditional.getText());
+        add.setName_additional(name);
+        add.setPrice_additional(price);
+        int r =cadd.register(add);
+        if (r==1) {
+            JOptionPane.showMessageDialog(vistapack, "Registro agregado!");
+        }else{
+            JOptionPane.showMessageDialog(vistapack, "Error");
+        }
+    }
+    public void actualizarAdditional(){
+        int id = Integer.parseInt(vistapack.txtIdAdditional.getText());
+        String name = vistapack.txtnameAdditional.getText();
+        Double price = Double.parseDouble(vistapack.txtPriceAdditional.getText());
+        
+        add.setId_additional(id);
+        add.setName_additional(name);
+        add.setPrice_additional(price);
+        int r = cadd.modify(add);
+        if (r==1) {
+            JOptionPane.showMessageDialog(vistapack, "Registro modificado!");
+        }else{
+            JOptionPane.showMessageDialog(vistapack, "Error");
+        }
+    }
+    public void eliminarAdditional() {
+        int fila = vistapack.jAdditional.getSelectedRow();
+        
+        int id = Integer.parseInt((String)vistapack.jAdditional.getValueAt(fila,0).toString());
+        cadd.delete(id);
+        JOptionPane.showMessageDialog(vistapack, "Registro eliminado");
     }
 }

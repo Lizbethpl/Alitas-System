@@ -31,7 +31,7 @@ public class frmUsers extends javax.swing.JFrame {
         this.setSize(new Dimension(1024, 768));
         this.getContentPane().setBackground(Color.WHITE);
         lblDate.setText(date());
-        lblTime.setText(time());
+        //lblTime.setText(time());
         btnProducts.setFocusPainted(false);
         btnUsers.disable();
         txtID.setVisible(false);
@@ -116,8 +116,8 @@ public class frmUsers extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         PanelDateTime = new javax.swing.JPanel();
-        lblTime = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
+        btnLogOut = new javax.swing.JButton();
         PanelLogo = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         btnProducts = new javax.swing.JButton();
@@ -154,15 +154,22 @@ public class frmUsers extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
 
         PanelDateTime.setBackground(new java.awt.Color(0, 0, 0));
-        PanelDateTime.setSize(new java.awt.Dimension(128, 0));
-
-        lblTime.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTime.setForeground(new java.awt.Color(255, 255, 255));
-        lblTime.setText("00:00:00");
 
         lblDate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblDate.setForeground(new java.awt.Color(255, 255, 255));
         lblDate.setText("DD/MM/YYYY ");
+
+        btnLogOut.setBackground(new java.awt.Color(0, 0, 0));
+        btnLogOut.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnLogOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
+        btnLogOut.setText(" Cerrar sesión");
+        btnLogOut.setBorder(null);
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogOutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelDateTimeLayout = new javax.swing.GroupLayout(PanelDateTime);
         PanelDateTime.setLayout(PanelDateTimeLayout);
@@ -171,23 +178,24 @@ public class frmUsers extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDateTimeLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 713, Short.MAX_VALUE)
-                .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         PanelDateTimeLayout.setVerticalGroup(
             PanelDateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDateTimeLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(PanelDateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDate)
-                    .addComponent(lblTime))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(lblDate)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PanelDateTimeLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         PanelLogo.setBackground(new java.awt.Color(227, 123, 28));
         PanelLogo.setPreferredSize(new java.awt.Dimension(512, 543));
-        PanelLogo.setSize(new java.awt.Dimension(128, 0));
 
         jButton3.setBackground(new java.awt.Color(231, 138, 66));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -241,12 +249,12 @@ public class frmUsers extends javax.swing.JFrame {
             PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLogoLayout.createSequentialGroup()
                 .addGroup(PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProducts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUsers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelLogoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PanelLogoLayout.setVerticalGroup(
@@ -260,10 +268,8 @@ public class frmUsers extends javax.swing.JFrame {
                 .addComponent(btnProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
-
-        jScrollPane1.setSize(new java.awt.Dimension(128, 0));
 
         jUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -281,7 +287,6 @@ public class frmUsers extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jUsers);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
-        jPanel1.setSize(new java.awt.Dimension(128, 0));
 
         jLabel2.setText("Nombre:");
 
@@ -458,10 +463,8 @@ public class frmUsers extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/userIcon.png"))); // NOI18N
         jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
-        jLabel8.setSize(new java.awt.Dimension(128, 0));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setSize(new java.awt.Dimension(128, 0));
 
         jLabel9.setBackground(new java.awt.Color(255, 51, 51));
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -502,14 +505,14 @@ public class frmUsers extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(341, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PanelDateTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
+                    .addComponent(PanelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)
@@ -519,7 +522,7 @@ public class frmUsers extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(12, Short.MAX_VALUE))))
+                        .addContainerGap(45, Short.MAX_VALUE))))
         );
 
         pack();
@@ -602,8 +605,11 @@ public class frmUsers extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //JOptionPane.showMessageDialog(null,"Esperalo pronto");
+//        CtrlPrincipal principal = new CtrlPrincipal();
+//        principal.Sale();
+//        this.dispose();
         CtrlPrincipal principal = new CtrlPrincipal();
-        principal.Sale();
+        principal.SalesMenu();
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -624,6 +630,13 @@ public class frmUsers extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnUsersActionPerformed
+
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        // TODO add your handling code here:
+        CtrlPrincipal principal = new CtrlPrincipal();
+        principal.Login();
+        this.dispose();
+    }//GEN-LAST:event_btnLogOutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -675,6 +688,7 @@ public class frmUsers extends javax.swing.JFrame {
     private javax.swing.JPanel PanelLogo;
     public javax.swing.JButton btnAdd;
     public javax.swing.JButton btnDelete;
+    public javax.swing.JButton btnLogOut;
     public javax.swing.JButton btnProducts;
     public javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUsers;
@@ -695,7 +709,6 @@ public class frmUsers extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jUsers;
     private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblTime;
     public javax.swing.JLabel lblWrLastN;
     public javax.swing.JLabel lblWrName;
     public javax.swing.JLabel lblWrPass;

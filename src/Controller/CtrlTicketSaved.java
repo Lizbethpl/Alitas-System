@@ -22,6 +22,17 @@ public class CtrlTicketSaved {
         this.frmTicket = frmTicket;
     }
     
+    public void deleteTick(int numOrd){
+        csale.DeleteTick(numOrd);
+    }
+    
+    void limpiarTabla() {
+        for (int i = 0; i < frmTicket.jTicket.getRowCount(); i++) {
+            modTicket.removeRow(i);
+            i=i-1;
+        }
+    }
+    
     public void listarTick(){
         // pasar numero de orden, inner añadir dato en consulta, nombre cliente
         modTicket=(DefaultTableModel)frmTicket.jTicket.getModel();

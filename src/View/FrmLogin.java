@@ -32,7 +32,7 @@ public class FrmLogin extends javax.swing.JFrame {
         this.setSize(new Dimension(1024, 768));
         this.getContentPane().setBackground(Color.WHITE);
         lblDate.setText(date());
-        lblTime.setText(time());
+        //lblTime.setText(time());
     }
 
     /**
@@ -45,7 +45,6 @@ public class FrmLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelDateTime = new javax.swing.JPanel();
-        lblTime = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         PanelLogo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -62,10 +61,6 @@ public class FrmLogin extends javax.swing.JFrame {
 
         PanelDateTime.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblTime.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTime.setForeground(new java.awt.Color(255, 255, 255));
-        lblTime.setText("00:00:00");
-
         lblDate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblDate.setForeground(new java.awt.Color(255, 255, 255));
         lblDate.setText("DD/MM/YYYY ");
@@ -77,17 +72,13 @@ public class FrmLogin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDateTimeLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addContainerGap(854, Short.MAX_VALUE))
         );
         PanelDateTimeLayout.setVerticalGroup(
             PanelDateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDateTimeLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(PanelDateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDate)
-                    .addComponent(lblTime))
+                .addComponent(lblDate)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -284,7 +275,6 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblUser;
     public javax.swing.JPasswordField txtPassword;
     public javax.swing.JTextField txtUser;

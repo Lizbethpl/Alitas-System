@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Model;
 
 import java.sql.Connection;
@@ -38,7 +34,23 @@ public class ConsultSale extends Conexion{
             System.out.println( e);
             }
         } 
-        }
+    }
+    
+    public void DeleteTick(int numOrd){ // Consulta a la tabla ConsultTikc
+        String sql = "DELETE FROM ticketsave WHERE sales_id_sale ="+numOrd;
+        try{
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(SQLException e){ // si no se ejecuta manda exepciones
+            System.err.print( e);           
+        } finally{
+        try {
+            con.close();
+        }catch(SQLException e){
+            System.out.println( e);
+            }
+        } 
+    }
     
     public List ListUser (){
     //public List ListUser (int id){
@@ -59,7 +71,6 @@ public class ConsultSale extends Conexion{
         }catch (Exception e) {
         }return datos;
     }
-    
     public List Listar (int id){
  
         List <Sale> datos = new ArrayList<>();
@@ -320,14 +331,15 @@ public class ConsultSale extends Conexion{
     public List ListarVentaProducto (int id){
         
         List <Sale> datos = new ArrayList<>();
-        String sql = "SELECT name_sproduct, total_sproduct FROM sales_product where sales_id_sale="+id;
+        String sql = "SELECT name_sproduct, lot_sproduct, total_sproduct FROM sales_product where sales_id_sale="+id;
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {                
                 Sale sale = new Sale();
                 sale.setName_sproduct(rs.getString(1));
-                sale.setTotal_sproduct(rs.getDouble(2));
+                sale.setLot_sproduct(rs.getInt(2));
+                sale.setTotal_sproduct(rs.getDouble(3));
                 datos.add(sale);
             }
             
@@ -336,7 +348,6 @@ public class ConsultSale extends Conexion{
         return datos;
         
     }
-   
     public List ListarOrden (){
         
         List <Sale> datos = new ArrayList<>();
@@ -357,8 +368,37 @@ public class ConsultSale extends Conexion{
         return datos;
         
     }
+    public void deleteSale(int id) {
+        String sql = "delete sales,sales_product\n" +
+                    "from sales\n" +
+                    "join sales_product\n" +
+                    "on sales.id_sales_product=sales_product.sales_id_sale\n" +
+                    "where sales_product.sales_id_sale="+id;
+        try {
+            con=getConnection();
+            ps= con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    public int registerShift(Shift s){
+        String sql = "INSERT INTO shift (shift_s, id_sales_shift) "
+                + "VALUES (?,?)";
+        
+        try { 
+            con=getConnection();
+            ps= con.prepareStatement(sql);           
+            ps.setDouble(1, s.getShift_s());         
+            ps.setInt(2, s.getId_sales_shift());
+            ps.executeUpdate();
+            System.out.println(sql);
+        } catch (Exception e) {
+        }    
+        return 1;
+        
+    }
     public static void main(String[] args) {
         ConsultSale c = new ConsultSale();
-        System.out.println(c.ListarVentaDetalle(10));
+        System.out.println();
     }
 }

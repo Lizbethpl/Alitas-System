@@ -13,59 +13,56 @@ import java.util.List;
 
 /**
  *
- * @author toshiba
+ * @author Dell
  */
-public class ConsultPackage extends Conexion{
+public class ConsultAdditional extends Conexion{
     PreparedStatement ps = null;
     ResultSet rs= null;
     Connection con = getConnection();
     
     public List Listar (){
-        List <Package> datos = new ArrayList<>();
-        String sql = "SELECT * FROM packages";
+        List <Additional> datos = new ArrayList<>();
+        String sql = "SELECT * FROM additional";
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {                
-                Package pack = new Package();
+                Additional add = new Additional();
                 
-                pack.setName_package(rs.getString(1));
-                pack.setDescription_package(rs.getString(2));
-                pack.setPrice_package(rs.getDouble(3));
-                pack.setId_package(rs.getInt(4));
-                datos.add(pack);
+                add.setId_additional(rs.getInt(1));
+                add.setName_additional(rs.getString(2));
+                add.setPrice_additional(rs.getDouble(3));
+                datos.add(add);
             }
             
         } catch (Exception e) {
         }
         return datos;
     }
-    public int register(Package p){
-        String sql = "INSERT INTO packages (name_package,description_package,price_package) "
-                + "VALUES (?,?,?)";
+    public int register(Additional add){
+        String sql = "INSERT INTO additional (name_additional,price_additional) "
+                + "VALUES (?,?)";
         
         try { 
             con=getConnection();
             ps= con.prepareStatement(sql);
-            ps.setString(1, p.getName_package());
-            ps.setString(2, p.getDescription_package());
-            ps.setDouble(3, p.getPrice_package());
+            ps.setString(1, add.getName_additional());
+            ps.setDouble(2, add.getPrice_additional());
             ps.executeUpdate();
         } catch (Exception e) {
         }    
         return 1;
     }
-    public int modify(Package p){
+    public int modify(Additional p){
         int r=0;
-        String sql = "UPDATE packages SET name_package=?, description_package=?,price_package=? WHERE Id_package=?";
+        String sql = "UPDATE additional SET name_additional=?,price_additional=? WHERE id_Additional=?";
         
         try { 
             con=getConnection();
             ps= con.prepareStatement(sql);
-            ps.setString(1, p.getName_package());
-            ps.setString(2, p.getDescription_package());
-            ps.setDouble(3, p.getPrice_package());
-            ps.setInt(4, p.getId_package());
+            ps.setString(1, p.getName_additional());
+            ps.setDouble(2, p.getPrice_additional());
+            ps.setInt(3, p.getId_additional());
             r=ps.executeUpdate();
             if (r==1) {
                 return 1;
@@ -77,7 +74,7 @@ public class ConsultPackage extends Conexion{
         return r;
     }
     public void delete(int id) {
-        String sql = "DELETE FROM packages WHERE Id_package="+id;
+        String sql = "DELETE FROM additional WHERE id_Additional="+id;
         try {
             con=getConnection();
             ps= con.prepareStatement(sql);

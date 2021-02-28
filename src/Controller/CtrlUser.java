@@ -37,6 +37,7 @@ public class CtrlUser implements ActionListener {
         this.frmU.btnUpdate.addActionListener(this);
         this.frmU.btnAdd.addActionListener(this);
         this.frmU.btnDelete.addActionListener(this);
+        //this.frmU.btnLogOut.addActionListener(this);
         listar(frmU.jUsers);
     }
     

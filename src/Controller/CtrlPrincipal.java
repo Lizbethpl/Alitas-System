@@ -1,9 +1,13 @@
 
 package Controller;
 
+import Model.Additional;
+import Model.ConsultAdditional;
 import Model.ConsultPackage;
 import Model.ConsultProducts;
 import Model.ConsultSale;
+import Model.ConsultSaleView;
+import Model.ConsultSaleViews;
 import Model.ConsultUser;
 import Model.DateSys;
 import Model.Login;
@@ -17,9 +21,13 @@ import View.frmUsers;
 import javax.swing.table.DefaultTableModel;
 import Model.Package;
 import Model.Sale;
+import Model.Shift;
 import Model.sale_products;
 import View.Menufrm;
 import View.SaleDetailsfrm;
+import View.SalesMenufrm;
+import View.SalesViewfrm;
+import View.SalesViewsfrm;
 import View.frmTicketSave;
 
 import javax.swing.DefaultListModel;
@@ -55,11 +63,24 @@ public class CtrlPrincipal {
     sale_products salep = new sale_products();
     SaleDetailsfrm frmsaledetails = new SaleDetailsfrm();
     DefaultListModel modelolist = new DefaultListModel();
+    Shift s = new Shift();
+    
+    sale_products spv = new sale_products();
+    SalesViewfrm frmsaleview = new SalesViewfrm();
+    ConsultSaleView csv = new ConsultSaleView();
+    DefaultTableModel modelov = new DefaultTableModel();
+    
+    Sale sales = new Sale();
+    ConsultSaleViews csvs = new ConsultSaleViews();
+    SalesViewsfrm frmsaleviews = new SalesViewsfrm();
+    DefaultTableModel modelovs = new DefaultTableModel();
+    
+    Additional add = new Additional();
+    ConsultAdditional cadd= new ConsultAdditional();
+    DefaultTableModel modeloadd = new DefaultTableModel();
     
     DefaultTableModel modTicket = new DefaultTableModel();
     frmTicketSave frmTicket = new frmTicketSave();
-    
-    
     
     public void Login(){
         CtrlLogin ctrl = new CtrlLogin(modUs, modLog, frmLog);
@@ -88,7 +109,7 @@ public class CtrlPrincipal {
     
     public void Packages(){
         
-        CtrlPackage con = new CtrlPackage(pack,modPack,frmPack,modelo);
+        CtrlPackage con = new CtrlPackage(pack,modPack,frmPack,add,cadd,modelo,modeloadd);
         frmPack.setVisible(true);
         frmPack.setLocationRelativeTo(null);
     }
@@ -99,11 +120,26 @@ public class CtrlPrincipal {
         frmsale.setLocationRelativeTo(null);
     }
     public void SaleDetails(){      
-        CtrlSaleDetails con = new CtrlSaleDetails(csale, frmsaledetails, salep,modelolist);
+        CtrlSaleDetails con = new CtrlSaleDetails(salep,s,csale, frmsaledetails,modelolist);
         frmsaledetails.setVisible(true);
         frmsaledetails.setLocationRelativeTo(null);
     }
+    public void SalesMenu(){
+        SalesMenufrm v = new SalesMenufrm();
+        v.setVisible(true);
+        v.setLocationRelativeTo(null);
+    }
     
+    public void SaleView(){
+        CtrlSaleView con = new CtrlSaleView(spv,csv,frmsaleview,modelov);
+        frmsaleview.setVisible(true);
+        frmsaleview.setLocationRelativeTo(null);       
+    }
+    public void SaleViews(){
+        CtrlSaleViews con = new CtrlSaleViews(sales,csvs,frmsaleviews,modelovs);
+        frmsaleviews.setVisible(true);
+        frmsaleviews.setLocationRelativeTo(null); 
+    }
     public void printTicket(int numOrd, String clientName){
         CtrlTicket ctrlTick = new CtrlTicket(csale,numOrd, clientName);
         ctrlTick.listData();
@@ -115,27 +151,24 @@ public class CtrlPrincipal {
         ctrlTick.listDataC();
         //ctrlTick.saveTicke();
     }
-    /*<
-    public void InserTicket(int numOrd){
-        CtrlTicket ctrlTick = new CtrlTicket(numOrd,csale);
-        ctrlTick.saveTicket();
-    }*/
-    
     public void saveTicket (){
         CtrlTicketSaved ctrlTickS = new CtrlTicketSaved(csale,modTicket,frmTicket); 
         ctrlTickS.listarTick();
         frmTicket.setVisible(true);
     }
- 
-    /*public void Package(){
-        pack.setVisible(true);
-        pack.setLocationRelativeTo(pack);
-    }*/
+    
+    public void deleteTicket(int numOrd){
+        CtrlTicketSaved ctrlTickS = new CtrlTicketSaved(csale,modTicket,frmTicket);
+        ctrlTickS.deleteTick(numOrd);
+        ctrlTickS.limpiarTabla();
+        ctrlTickS.listarTick();
+    }
     
     public static void main(String[] args) {
         CtrlPrincipal principal = new CtrlPrincipal();
         principal.Login();
-            
+               
+        
     }
     
     

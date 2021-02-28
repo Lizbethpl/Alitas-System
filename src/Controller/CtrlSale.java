@@ -187,6 +187,8 @@ public class CtrlSale implements ActionListener {
         Integer lot = (Integer) frmsale.jSpLotAlitas.getValue();
         String description = frmsale.txtDescriptionAlitas.getText();
         //Double total = Double.parseDouble(price_alitas * lot);
+        
+        
         Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
         sale.setName_sproduct("ALITAS " + flavor);
         sale.setLot_sproduct(lot);
@@ -194,7 +196,7 @@ public class CtrlSale implements ActionListener {
         sale.setTotal_sproduct(price_alitas * lot);
         sale.setSales_id_sale(sale_id);
         int r =csale.register(sale);
-        if (r==1) {
+        if (r==1) {          
             JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
         }else{
             JOptionPane.showMessageDialog(frmsale, "Error");
@@ -244,7 +246,7 @@ public class CtrlSale implements ActionListener {
             }
         }else{
             Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
-            sale.setName_sproduct(typeburger + Additionalburger);
+            sale.setName_sproduct(typeburger + " "+Additionalburger);
             sale.setLot_sproduct(lot);
             sale.setDescription_sproduct(description);
             sale.setTotal_sproduct((price_boneless * lot)+ priceAdditional);
@@ -298,8 +300,6 @@ public class CtrlSale implements ActionListener {
         }
     }
     public void agregarDesserts(){
-        
-        
         String typeDesserts = (String) frmsale.jcDesserts.getSelectedItem();
         Double price_desserts = csale.priceDrink(typeDesserts);
         Integer lot = (Integer) frmsale.jSLotDesserts.getValue();
@@ -319,8 +319,6 @@ public class CtrlSale implements ActionListener {
         }
     }
     public void agregarPackages(){
-        
-        
         String typePackages = (String) frmsale.jcPackages.getSelectedItem();
         Double price_packages = csale.pricePackages(typePackages);
         Integer lot = (Integer) frmsale.jSLotPackages.getValue();
@@ -392,7 +390,7 @@ public class CtrlSale implements ActionListener {
         
         int r =csale.registerSale(salep);
         if (r==1) {
-            System.out.println("Venta agregada");
+            JOptionPane.showMessageDialog(frmsale, "Venta agregada!");
         }else{
             JOptionPane.showMessageDialog(frmsale, "Error");
         }
@@ -403,5 +401,6 @@ public class CtrlSale implements ActionListener {
         int orden = lista.get(0).getSales_id_sale();
         orden = orden + 1;
         frmsale.txtNumOrder.setText(String.valueOf(orden));
+        frmsale.txtNameClient.setText("Orden " + orden);
     }
 }

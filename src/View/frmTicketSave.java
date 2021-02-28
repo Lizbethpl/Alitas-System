@@ -125,7 +125,7 @@ public class frmTicketSave extends javax.swing.JFrame {
         System.out.println("id "+ id);
         System.out.println("cliente "+ clientName);
         ctrPrin.printTicket(id, clientName);
-
+        ctrPrin.deleteTicket(id);
     }//GEN-LAST:event_btnPrintActionPerformed
 
     /**
@@ -153,6 +153,10 @@ public class frmTicketSave extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(frmTicketSave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

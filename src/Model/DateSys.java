@@ -24,6 +24,4 @@ public class DateSys{
         hour +=  LocalDateTime.now().getHour() +":" + LocalDateTime.now().getMinute();
         return hour;
     }
-
-    
 }

@@ -27,7 +27,7 @@ public class CargarComboCategory extends Conexion{
         try {
             ps = conn.prepareStatement(sql);
             ResultSet result = ps.executeQuery();
-            cbxCategory.addItem("SELECCIONA CATEGORIA");
+            //cbxCategory.addItem("SELECCIONA CATEGORIA");
             while (result.next()) {                
                 cbxCategory.addItem(result.getString("name_category"));
             }
@@ -47,7 +47,7 @@ public class CargarComboCategory extends Conexion{
         try {
             ps = conn.prepareStatement(sql);
             ResultSet result = ps.executeQuery();
-            cbxFlavor.addItem("SABOR");
+            //cbxFlavor.addItem("SABOR");
             while (result.next()) {                
                 cbxFlavor.addItem(result.getString("name_flavor"));
             }
@@ -66,7 +66,7 @@ public class CargarComboCategory extends Conexion{
         try {
             ps = conn.prepareStatement(sql);
             ResultSet result = ps.executeQuery();
-            cbxBurger.addItem("SABOR");
+            //cbxBurger.addItem("SABOR");
             while (result.next()) {                
                 cbxBurger.addItem(result.getString("name_product"));
             }
@@ -86,7 +86,7 @@ public class CargarComboCategory extends Conexion{
         try {
             ps = conn.prepareStatement(sql);
             ResultSet result = ps.executeQuery();
-            cbxPotatoes.addItem("SABOR");
+            //cbxPotatoes.addItem("SABOR");
             while (result.next()) {                
                 cbxPotatoes.addItem(result.getString("name_product"));
             }
@@ -106,7 +106,7 @@ public class CargarComboCategory extends Conexion{
         try {
             ps = conn.prepareStatement(sql);
             ResultSet result = ps.executeQuery();
-            cbxDrinks.addItem("BEBIDA");
+            //cbxDrinks.addItem("BEBIDA");
             while (result.next()) {                
                 cbxDrinks.addItem(result.getString("name_product"));
             }
@@ -126,7 +126,7 @@ public class CargarComboCategory extends Conexion{
         try {
             ps = conn.prepareStatement(sql);
             ResultSet result = ps.executeQuery();
-            cbxDesserts.addItem("POSTRES");
+            //cbxDesserts.addItem("POSTRES");
             while (result.next()) {                
                 cbxDesserts.addItem(result.getString("name_product"));
             }
@@ -166,7 +166,7 @@ public class CargarComboCategory extends Conexion{
         try {
             ps = conn.prepareStatement(sql);
             ResultSet result = ps.executeQuery();
-            cbxPackages.addItem("PAQUETES");
+            //cbxPackages.addItem("PAQUETES");
             while (result.next()) {                
                 cbxPackages.addItem(result.getString("name_package"));
             }

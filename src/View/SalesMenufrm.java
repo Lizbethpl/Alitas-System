@@ -17,13 +17,13 @@ import javax.swing.BorderFactory;
  *
  * @author toshiba
  */
-public class Project_Menu extends javax.swing.JFrame {
+public class SalesMenufrm extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
     
-    public Project_Menu() {
+    public SalesMenufrm() {
         initComponents();
         this.setSize(new Dimension(1024, 768));
         this.getContentPane().setBackground(Color.WHITE);
@@ -74,6 +74,11 @@ public class Project_Menu extends javax.swing.JFrame {
         btnLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
         btnLogOut.setText(" Cerrar sesión");
         btnLogOut.setBorder(null);
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogOutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelDateTimeLayout = new javax.swing.GroupLayout(PanelDateTime);
         PanelDateTime.setLayout(PanelDateTimeLayout);
@@ -83,7 +88,7 @@ public class Project_Menu extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         PanelDateTimeLayout.setVerticalGroup(
@@ -92,7 +97,7 @@ public class Project_Menu extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(PanelDateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDate)
-                    .addComponent(btnLogOut))
+                    .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -169,7 +174,7 @@ public class Project_Menu extends javax.swing.JFrame {
                 .addComponent(btnProdcutosF, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSales, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(408, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(37, 116, 235));
@@ -177,7 +182,7 @@ public class Project_Menu extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(255, 51, 51));
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Productos");
+        jLabel9.setText("Realizar venta");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -185,8 +190,8 @@ public class Project_Menu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +205,7 @@ public class Project_Menu extends javax.swing.JFrame {
         jLabel11.setBackground(new java.awt.Color(255, 51, 51));
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Paquetes ");
+        jLabel11.setText("Ver ventas");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -219,7 +224,7 @@ public class Project_Menu extends javax.swing.JFrame {
         );
 
         btnProducts.setBackground(new java.awt.Color(107, 175, 221));
-        btnProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/product_white.png"))); // NOI18N
+        btnProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sale1.png"))); // NOI18N
         btnProducts.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(37, 116, 235)));
         btnProducts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,7 +233,7 @@ public class Project_Menu extends javax.swing.JFrame {
         });
 
         btnPackages.setBackground(new java.awt.Color(227, 76, 91));
-        btnPackages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/package_white.png"))); // NOI18N
+        btnPackages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sale3.png"))); // NOI18N
         btnPackages.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 34, 44)));
         btnPackages.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,16 +245,16 @@ public class Project_Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PanelDateTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PanelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProducts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPackages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(222, 222, 222))
-            .addComponent(PanelDateTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(213, 213, 213))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,11 +268,11 @@ public class Project_Menu extends javax.swing.JFrame {
                         .addComponent(btnProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
+                        .addGap(18, 18, 18)
                         .addComponent(btnPackages, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(261, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
 
         pack();
@@ -277,14 +282,13 @@ public class Project_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         CtrlPrincipal principal = new CtrlPrincipal();
-        principal.Product();
+        principal.Sale();
         this.dispose();
     }//GEN-LAST:event_btnProductsActionPerformed
 
     private void btnPackagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPackagesActionPerformed
-        // TODO add your handling code here:
         CtrlPrincipal principal = new CtrlPrincipal();
-        principal.Packages();
+        principal.SaleView();
         this.dispose();
     }//GEN-LAST:event_btnPackagesActionPerformed
 
@@ -299,15 +303,23 @@ public class Project_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Project_Menu pro = new Project_Menu();
         //pro.setVisible(true);
+        CtrlPrincipal principal = new CtrlPrincipal();
+        principal.ProductMenu();
+        this.dispose();
         
     }//GEN-LAST:event_btnProdcutosFActionPerformed
 
     private void btnSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalesActionPerformed
         // TODO add your handling code here:
-        CtrlPrincipal principal = new CtrlPrincipal();
-        principal.SalesMenu();
-        this.dispose();
+        
     }//GEN-LAST:event_btnSalesActionPerformed
+
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        // TODO add your handling code here:
+        CtrlPrincipal principal = new CtrlPrincipal();
+        principal.Login();
+        this.dispose();
+    }//GEN-LAST:event_btnLogOutActionPerformed
 
     /**
      * @param args the command line arguments
