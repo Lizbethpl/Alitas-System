@@ -41,8 +41,8 @@ public class ConsultUser extends Conexion {
         PreparedStatement ps = null;
         Connection con = getConnection();
         
-        String sql = "INSERT INTO users (name_user,lastNameP_user,lastNameM_user,phone_user,gender_user,date_user,password_user) "
-                + "VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO users (name_user,lastNameP_user,lastNameM_user,phone_user,gender_user,date_user,password_user,id_tipo) "
+                + "VALUES (?,?,?,?,?,?,?,?)";
         
         try{
             ps = con.prepareStatement(sql);
@@ -53,6 +53,7 @@ public class ConsultUser extends Conexion {
             ps.setString(5, us.getGender());
             ps.setString(6, us.getDateRegister());
             ps.setString(7, us.getPassword());
+            ps.setInt(8, us.getId_Tipo());
             /*ps.setString(7, hash.sha1(us.getPassword()));*/
             
             ps.execute();

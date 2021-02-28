@@ -26,6 +26,7 @@ public class CtrlSaleView implements ActionListener {
     ConsultSaleView csv;
     SalesViewfrm saleviewfrm;
     DefaultTableModel modelo;
+    CtrlPrincipal ctrPrin = new CtrlPrincipal();
 
     public CtrlSaleView(sale_products sp, ConsultSaleView csv, SalesViewfrm saleviewfrm, DefaultTableModel modelo) {
         this.sp = sp;
@@ -33,6 +34,7 @@ public class CtrlSaleView implements ActionListener {
         this.saleviewfrm = saleviewfrm;
         this.modelo = modelo;
         this.saleviewfrm.btnEliminar.addActionListener(this);
+        this.saleviewfrm.btnImprimir.addActionListener(this);
         
         listar(saleviewfrm.jSalesView);
     }
@@ -45,7 +47,10 @@ public class CtrlSaleView implements ActionListener {
             limpiarTabla();
             listar(saleviewfrm.jSalesView);
         }
-        
+      
+        if (e.getSource()== saleviewfrm.btnImprimir) {
+            print();
+        }
     }
     
    void limpiarTabla() {
@@ -73,8 +78,14 @@ public class CtrlSaleView implements ActionListener {
         int fila = saleviewfrm.jSalesView.getSelectedRow();   
         int id = Integer.parseInt((String)saleviewfrm.jSalesView.getValueAt(fila,1).toString());
         csv.delete(id);
-        JOptionPane.showMessageDialog(saleviewfrm, "Registro eliminado");
-        
+        JOptionPane.showMessageDialog(saleviewfrm, "Registro eliminado");        
+    } 
+    
+    public void print() {
+        int fila = saleviewfrm.jSalesView.getSelectedRow();   
+        int id = Integer.parseInt((String)saleviewfrm.jSalesView.getValueAt(fila,1).toString());
+        String clientName = (saleviewfrm.jSalesView.getValueAt(fila,2).toString());
+        ctrPrin.printTicket(id, clientName );
     } 
 
     

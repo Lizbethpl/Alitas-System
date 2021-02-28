@@ -84,7 +84,7 @@ public class CtrlUser implements ActionListener {
         
         if(e.getSource() == frmU.btnAdd){
             
-          
+          String tipo = (String) frmU.jcUsers.getSelectedItem();
             modU.setName(frmU.txtName.getText());
             modU.setLastNameP(frmU.txtLastNameP.getText());
             modU.setLastNameM(frmU.txtLastNameM.getText());
@@ -92,12 +92,14 @@ public class CtrlUser implements ActionListener {
             modU.setGender(frmU.gender());    
             modU.setDateRegister(datS.getDateSys());
             modU.setPassword(frmU.txtPassword.getText());
+            modU.setId_Tipo(Integer.parseInt(tipo));
             
             try {
                 if(modC.Register(modU)){
                     JOptionPane.showMessageDialog(null,"Registro Añadido");
                     limpiarTabla();
                     listar(frmU.jUsers);
+                    limpiarCajas();
                     
                 }else{
                     JOptionPane.showMessageDialog(null, "Error al Añadido");
@@ -122,6 +124,7 @@ public class CtrlUser implements ActionListener {
                 JOptionPane.showMessageDialog(null,"Registro Actualizado");
                 limpiarTabla();
                 listar(frmU.jUsers);
+                limpiarCajas();
             }else{
                 JOptionPane.showMessageDialog(null,"Error al Actualizar");
             }           
@@ -134,6 +137,7 @@ public class CtrlUser implements ActionListener {
                     JOptionPane.showMessageDialog(null,"Registro Eliminado");
                     limpiarTabla();
                     listar(frmU.jUsers);
+                    limpiarCajas();
                 }else{              
                     JOptionPane.showMessageDialog(null,"Error al Eliminar");               
             } 

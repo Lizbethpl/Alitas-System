@@ -74,7 +74,7 @@ public class ConsultSale extends Conexion{
     public List Listar (int id){
  
         List <Sale> datos = new ArrayList<>();
-        String sql = "SELECT name_sproduct, total_sproduct,id_sproduct,lot_sproduct FROM sales_product where sales_id_sale="+id;
+        String sql = "SELECT name_sproduct, total_sproduct,id_sproduct,lot_sproduct, description_sproduct FROM sales_product where sales_id_sale="+id;
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -84,7 +84,26 @@ public class ConsultSale extends Conexion{
                 sale.setTotal_sproduct(rs.getDouble(2));
                 sale.setId(rs.getInt(3));
                 sale.setLot_sproduct(rs.getInt(4));
+                sale.setDescription_sproduct(rs.getString(5));
                 datos.add(sale);
+            }
+            
+        } catch (Exception e) {
+        }
+        return datos;
+    }
+    public List ListarCambio(int id){
+ 
+        List <Shift> datos = new ArrayList<>();
+        String sql = "select shift_s from shift where id_sales_shift="+id;
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                Shift shift = new Shift();
+                shift.setShift_s(rs.getDouble(1));
+                
+                datos.add(shift);
             }
             
         } catch (Exception e) {

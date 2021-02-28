@@ -5,6 +5,7 @@ import Model.Sale;
 import Model.sale_products;
 import View.frmTicketSave;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,16 +23,24 @@ public class CtrlTicketSaved {
         this.frmTicket = frmTicket;
     }
     
-    public void deleteTick(int numOrd){
-        csale.DeleteTick(numOrd);
-    }
     
-    void limpiarTabla() {
+    
+    /*void limpiarTabla() {
         for (int i = 0; i < frmTicket.jTicket.getRowCount(); i++) {
             modTicket.removeRow(i);
-            i=i-1;
+            i=i-1;           
+        }  
+        DefaultTableModel tblmodel = new  DefaultTableModel();
+        if(frmTicket.jTicket.getSelectedRow()==1){
+            tblmodel.removeRow(frmTicket.jTicket.getSelectedRow());
+        }else{
+            if(frmTicket.jTicket.getSelectedRow()==1){
+                JOptionPane.showMessageDialog(frmTicket, "Table is empty");
+            }else{
+                JOptionPane.showMessageDialog(frmTicket, "Table is empty");
+           }
         }
-    }
+    }*/
     
     public void listarTick(){
         // pasar numero de orden, inner añadir dato en consulta, nombre cliente
@@ -44,5 +53,12 @@ public class CtrlTicketSaved {
             modTicket.addRow(object);
         }
         frmTicket.jTicket.setModel(modTicket);
+    }
+    
+    public void deleteTick(int numOrd){
+        csale.DeleteTick(numOrd);
+        //limpiarTabla();
+        listarTick();
+   
     }
 }

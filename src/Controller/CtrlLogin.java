@@ -49,12 +49,23 @@ public class CtrlLogin implements ActionListener{
         if(e.getSource() == frmLog.btnInto){
             modUs.setName(frmLog.txtUser.getText());           
             modUs.setPassword(String.valueOf(frmLog.txtPassword.getPassword())); 
-            if(modLog.log(modUs)){               
-                frmLog.dispose();
-                principal.User();
-                /*frmUs.setVisible(true); */            
+            if(modLog.log(modUs)){
+                if(modUs.getId_Tipo()==1){
+                    frmLog.dispose();
+                    principal.User();
+                    /*frmUs.setVisible(true); */            
                 
-                JOptionPane.showMessageDialog(null,"Ingreso exitoso");
+                    JOptionPane.showMessageDialog(null,"Ingreso exitoso");
+                }else{if(modUs.getId_Tipo()==2){
+                    frmLog.dispose();
+                    principal.Sale();
+                    /*frmUs.setVisible(true); */            
+                
+                    JOptionPane.showMessageDialog(null,"Ingreso exitoso");
+                }
+                
+            }
+                
                 
             }else{
                 JOptionPane.showMessageDialog(null, "Error al ingresar");

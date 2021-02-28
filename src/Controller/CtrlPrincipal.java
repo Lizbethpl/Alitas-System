@@ -151,6 +151,14 @@ public class CtrlPrincipal {
         ctrlTick.listDataC();
         //ctrlTick.saveTicke();
     }
+    
+    public void printTicketR(int numOrd, String clientName){
+        CtrlTicket ctrlTick = new CtrlTicket(csale,numOrd, clientName);
+        ctrlTick.listDataR();
+        //ctrlTick.saveTicke();
+    }
+    
+    
     public void saveTicket (){
         CtrlTicketSaved ctrlTickS = new CtrlTicketSaved(csale,modTicket,frmTicket); 
         ctrlTickS.listarTick();
@@ -160,8 +168,8 @@ public class CtrlPrincipal {
     public void deleteTicket(int numOrd){
         CtrlTicketSaved ctrlTickS = new CtrlTicketSaved(csale,modTicket,frmTicket);
         ctrlTickS.deleteTick(numOrd);
-        ctrlTickS.limpiarTabla();
-        ctrlTickS.listarTick();
+      
+  
     }
     
     public static void main(String[] args) {

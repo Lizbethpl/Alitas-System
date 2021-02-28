@@ -276,6 +276,11 @@ public static String cambiof = "";
         btnReimprimir.setBackground(new java.awt.Color(255, 255, 255));
         btnReimprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/imprimir.png"))); // NOI18N
         btnReimprimir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnReimprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReimprimirActionPerformed(evt);
+            }
+        });
 
         jpRealizado.setBackground(new java.awt.Color(95, 201, 104));
 
@@ -484,6 +489,11 @@ public static String cambiof = "";
        ctrPrin.printTicketC(Integer.parseInt(jlOrder.getText()),jlClient.getText());
         
     }//GEN-LAST:event_btnRealizarActionPerformed
+
+    private void btnReimprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReimprimirActionPerformed
+        CtrlPrincipal ctrPrin = new CtrlPrincipal();
+        ctrPrin.printTicketR(Integer.parseInt(jlOrder.getText()),jlClient.getText());
+    }//GEN-LAST:event_btnReimprimirActionPerformed
 
     /**
      * @param args the command line arguments

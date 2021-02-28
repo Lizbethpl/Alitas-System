@@ -4,6 +4,7 @@ package Controller;
 import Model.ConsultSale;
 import Model.DateSys;
 import Model.Sale;
+import Model.Shift;
 import Model.sale_products;
 import View.Menufrm;
 import View.SaleDetailsfrm;
@@ -27,10 +28,14 @@ public class CtrlTicket{
     String printData = "";
     String printPrice = "";
     String valueFinal;
+    String cambio = "";
+    String recibido = "";
     List myList = new ArrayList();
     List mySecondList = new ArrayList();
+    List myTrheeList = new ArrayList();
     List myListP = new ArrayList();
     List mySecondListP = new ArrayList();
+    
 
     
     public CtrlTicket(ConsultSale csale,int numOrd, String clientName){
@@ -127,9 +132,10 @@ public class CtrlTicket{
     }
     
     public void print(){
+        
         numOrdS = String.valueOf(numOrd);
         CtrlPrintTicket tick = new CtrlPrintTicket("A LAS ALITAS",clientName,numOrdS,dat.getDateSys(),printData,
-                    price,"100","200");
+                    price,recibido,cambio);
         tick.print();
         
     }
@@ -141,26 +147,43 @@ public class CtrlTicket{
             saveTicke();
     }
     
+    public void printR(){
+        numOrdS = String.valueOf(numOrd);
+        CtrlPrintTicket tick = new CtrlPrintTicket(clientName,numOrdS,dat.getHourSys(),printData);
+            tick.printC();
+    }
+    
     public void listData(){
         int id = numOrd;
             List <Sale> lista = csale.Listar(id);
-            
+  
             List <sale_products> listaS = csale.ListarVentaDetalle(id);
-            System.out.println(listaS);
-            price += "$"+String.valueOf(listaS.get(0).getTotal_sale());
+            double tot = listaS.get(0).getTotal_sale();
+            
+            //price += "$"+String.valueOf(listaS.get(0).getTotal_sale());
+            
+            List <Shift> listashift = csale.ListarCambio(id);
+            double cam = listashift.get(0).getShift_s();
+            
+            recibido = String.valueOf(tot + cam);
+            price += "$"+String.valueOf(tot);
+            cambio += "$"+String.valueOf(cam);
+            //cambio += String.valueOf(listashift.get(0).getShift_s());
+
+            
             
             for (int i = 0; i < lista.size(); i++) {
                 myList.add(lista.get(i).getName_sproduct());
                 mySecondList.add(Double.toString(lista.get(i).getTotal_sproduct()));
             }
             
+            
             completeArray(myList);
             listDat(mySecondList);
             System.out.println(myListP);
             System.out.println(mySecondListP);
             for (int i = 0; i < lista.size(); i++) {
-                printData += myListP.get(i) +""+ mySecondListP.get(i) +"\n";
-                
+                printData += myListP.get(i) +""+ mySecondListP.get(i) +"\n";                
             }
             
             print();
@@ -174,15 +197,36 @@ public class CtrlTicket{
             for (int i = 0; i < lista.size(); i++) {
                 myList.add(lista.get(i).getName_sproduct());
                 mySecondList.add(Integer.toString(lista.get(i).getLot_sproduct()));
+                myTrheeList.add(lista.get(i).getDescription_sproduct());
             }
            
-            completeArray(myList);
-            listDats(mySecondList);
-            System.out.println(myListP);
-            System.out.println(mySecondListP);
+            //completeArray(myList);
+            //listDats(mySecondList);
+            //System.out.println(myListP);
+            //System.out.println(mySecondListP);
             for (int i = 0; i < lista.size(); i++) {
-                printData += myListP.get(i) +""+ mySecondListP.get(i) +"\n";              
+                printData += mySecondList.get(i) +" "+myList.get(i) + " extras: "+ myTrheeList.get(i)+"\n";              
             }   
             printC();
+    }  
+    
+    
+    public void listDataR(){
+        int id = numOrd;
+            List <Sale> lista = csale.Listar(id);
+                     
+            for (int i = 0; i < lista.size(); i++) {
+                myList.add(lista.get(i).getName_sproduct());
+                mySecondList.add(Integer.toString(lista.get(i).getLot_sproduct()));
+            }
+           
+            //completeArray(myList);
+            //listDats(mySecondList);
+            //System.out.println(myListP);
+            //System.out.println(mySecondListP);
+            for (int i = 0; i < lista.size(); i++) {
+                printData += mySecondList.get(i) +" "+myList.get(i) +"\n";              
+            }   
+            printR();
     }  
 }

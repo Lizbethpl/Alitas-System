@@ -49,7 +49,7 @@ public class CtrlPrintTicket {
     "No. Orden: {{ordNum}}\n" +
     "Hora de venta: {{dateTime}}\n"+
     "=============================\n"+
-    "{{items}} \n\n\n";
+    "{{items}}\n\n\n";
     
     
   //El constructor que setea los valores a la instancia
