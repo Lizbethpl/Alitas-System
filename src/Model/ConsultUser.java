@@ -28,7 +28,9 @@ public class ConsultUser extends Conexion {
                 us.setPhoneNumber(rs.getString(5));
                 us.setGender(rs.getString(6));
                 us.setDateRegister(rs.getString(7));
+                
                 us.setPassword(rs.getString(8));
+                us.setId_Tipo(rs.getInt(9));
                 datos.add(us);
             }
             
@@ -76,7 +78,7 @@ public class ConsultUser extends Conexion {
         Connection con = getConnection();
         
         String sql = "UPDATE users SET name_user = ?,lastNameP_user = ?,LastNameM_user = ?,phone_user = ?,gender_user = ?,"
-                + "date_user = ?,password_user = ? WHERE id_user = ?";
+                + "date_user = ?,password_user = ? ,id_tipo = ? WHERE id_user = ?";
         
         try{
             ps = con.prepareStatement(sql);
@@ -87,7 +89,8 @@ public class ConsultUser extends Conexion {
             ps.setString(5, us.getGender());
             ps.setString(6, us.getDateRegister());
             ps.setString(7, us.getPassword());
-            ps.setInt(8,us.getId());
+            ps.setInt(8,us.getId_Tipo());
+            ps.setInt(9,us.getId());
             
             ps.execute();
             return true;

@@ -28,6 +28,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.SpinnerNumberModel;
 /**
  *
  * @author toshiba
@@ -63,6 +64,16 @@ public class Menufrm extends javax.swing.JFrame {
 //        jSale.getColumnModel().getColumn(2).setMaxWidth(0);
 //        jSale.getColumnModel().getColumn(2).setMinWidth(0);
 //        jSale.getColumnModel().getColumn(2).setPreferredWidth(0);
+        SpinnerNumberModel modelo = new SpinnerNumberModel();
+        modelo.setMinimum(1);
+        modelo.setValue(1);
+        jSpLotAlitas.setModel(modelo);
+        jsLotBoneless.setModel(modelo);
+        JSLotBurger.setModel(modelo);
+        jsLotPotatoes.setModel(modelo);
+        jSLotDrink.setModel(modelo);
+        jSLotDesserts.setModel(modelo);
+        jSLotPackages.setModel(modelo);
     }
     public static String id = "";
     
@@ -86,7 +97,6 @@ public class Menufrm extends javax.swing.JFrame {
         PanelDateTime = new javax.swing.JPanel();
         lblDate = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
-        btnHome = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
@@ -103,7 +113,7 @@ public class Menufrm extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jcFlavorsAlitas = new javax.swing.JComboBox<>();
+        jcFlavorsAlitas = new javax.swing.JComboBox<String>();
         jLabel8 = new javax.swing.JLabel();
         jSpLotAlitas = new javax.swing.JSpinner();
         btnAddAlitas = new javax.swing.JButton();
@@ -113,18 +123,18 @@ public class Menufrm extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jcFlavorsB = new javax.swing.JComboBox<>();
+        jcFlavorsB = new javax.swing.JComboBox<String>();
         jLabel13 = new javax.swing.JLabel();
         jsLotBoneless = new javax.swing.JSpinner();
         jLabel14 = new javax.swing.JLabel();
         txtDescriptionBoneless = new javax.swing.JTextField();
         btnAddBoneless = new javax.swing.JButton();
-        btnAddPotatoesAdditional = new javax.swing.JButton();
+        jrPapas = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jcTypeBurger = new javax.swing.JComboBox<>();
+        jcTypeBurger = new javax.swing.JComboBox<String>();
         jLabel18 = new javax.swing.JLabel();
         txtDescriptionBurger = new javax.swing.JTextField();
         JSLotBurger = new javax.swing.JSpinner();
@@ -133,21 +143,21 @@ public class Menufrm extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
-        jcPotatoes = new javax.swing.JComboBox<>();
+        jcPotatoes = new javax.swing.JComboBox<String>();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         txtDescriptionPotatoes = new javax.swing.JTextField();
         jsLotPotatoes = new javax.swing.JSpinner();
         jLabel24 = new javax.swing.JLabel();
         btnAddPotatoes = new javax.swing.JButton();
-        jcAdditionalBurguer = new javax.swing.JComboBox<>();
-        btnAddPotatoesBurguer = new javax.swing.JButton();
+        jcAdditionalBurguer = new javax.swing.JComboBox<String>();
+        jPapasH = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jcDrinks = new javax.swing.JComboBox<>();
+        jcDrinks = new javax.swing.JComboBox<String>();
         jLabel27 = new javax.swing.JLabel();
         txtDescriptionDrink = new javax.swing.JTextField();
         jSLotDrink = new javax.swing.JSpinner();
@@ -155,7 +165,7 @@ public class Menufrm extends javax.swing.JFrame {
         btnAddDrink = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        jcDesserts = new javax.swing.JComboBox<>();
+        jcDesserts = new javax.swing.JComboBox<String>();
         jLabel30 = new javax.swing.JLabel();
         jSLotDesserts = new javax.swing.JSpinner();
         jLabel31 = new javax.swing.JLabel();
@@ -168,7 +178,7 @@ public class Menufrm extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jcPackages = new javax.swing.JComboBox<>();
+        jcPackages = new javax.swing.JComboBox<String>();
         jLabel38 = new javax.swing.JLabel();
         txtDescriptionPackages = new javax.swing.JTextField();
         jSLotPackages = new javax.swing.JSpinner();
@@ -205,17 +215,6 @@ public class Menufrm extends javax.swing.JFrame {
             }
         });
 
-        btnHome.setBackground(new java.awt.Color(0, 0, 0));
-        btnHome.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnHome.setForeground(new java.awt.Color(255, 255, 255));
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home.png"))); // NOI18N
-        btnHome.setBorder(null);
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout PanelDateTimeLayout = new javax.swing.GroupLayout(PanelDateTime);
         PanelDateTime.setLayout(PanelDateTimeLayout);
         PanelDateTimeLayout.setHorizontalGroup(
@@ -224,23 +223,16 @@ public class Menufrm extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(313, 313, 313)
                 .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         PanelDateTimeLayout.setVerticalGroup(
             PanelDateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDateTimeLayout.createSequentialGroup()
-                .addGroup(PanelDateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDateTimeLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(PanelDateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDate)
-                            .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDateTimeLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
+                .addGroup(PanelDateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDate)
+                    .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -393,12 +385,7 @@ public class Menufrm extends javax.swing.JFrame {
         btnAddBoneless.setForeground(new java.awt.Color(255, 255, 255));
         btnAddBoneless.setText("AÑADIR");
 
-        btnAddPotatoesAdditional.setText("Agregar papas");
-        btnAddPotatoesAdditional.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddPotatoesAdditionalActionPerformed(evt);
-            }
-        });
+        jrPapas.setText("Agregar papas");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -414,42 +401,38 @@ public class Menufrm extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jcFlavorsAlitas, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSpLotAlitas))
-                        .addGap(54, 54, 54)
-                        .addComponent(btnAddAlitas)
-                        .addContainerGap(38, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(28, 28, 28)
-                                .addComponent(txtDescriptionBoneless, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAddPotatoesAdditional, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtDescriptionAlitas, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jcFlavorsB, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(22, 22, 22)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jsLotBoneless, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(33, 33, 33)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                                .addComponent(btnAddBoneless)))
-                        .addGap(30, 30, 30))))
+                        .addComponent(jLabel14)
+                        .addGap(28, 28, 28)
+                        .addComponent(txtDescriptionBoneless, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtDescriptionAlitas, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(115, 115, 115))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel12)
+                                .addComponent(jcFlavorsB, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(22, 22, 22)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel13)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jsLotBoneless, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(47, 47, 47)
+                                    .addComponent(btnAddBoneless))))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(jcFlavorsAlitas, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSpLotAlitas))
+                            .addGap(41, 41, 41)
+                            .addComponent(btnAddAlitas)))
+                    .addComponent(jrPapas))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -472,8 +455,8 @@ public class Menufrm extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
                         .addComponent(txtDescriptionAlitas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
@@ -482,19 +465,21 @@ public class Menufrm extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jcFlavorsB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jsLotBoneless, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAddBoneless, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnAddBoneless, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jrPapas))
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 3, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDescriptionBoneless, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAddPotatoesAdditional, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))))
-                .addGap(42, 42, 42))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addComponent(jLabel14))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(9, 9, 9)
+                            .addComponent(txtDescriptionBoneless, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(46, 46, 46))
         );
 
         jTabbedPane1.addTab("ALITAS Y BONLESS", jPanel2);
@@ -573,12 +558,7 @@ public class Menufrm extends javax.swing.JFrame {
         btnAddPotatoes.setForeground(new java.awt.Color(255, 255, 255));
         btnAddPotatoes.setText("AÑADIR");
 
-        btnAddPotatoesBurguer.setText("Agregar papas");
-        btnAddPotatoesBurguer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddPotatoesBurguerActionPerformed(evt);
-            }
-        });
+        jPapasH.setText("Agregar papas");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -613,13 +593,16 @@ public class Menufrm extends javax.swing.JFrame {
                                     .addComponent(jcAdditionalBurguer, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtDescriptionBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAddBurger)
-                                    .addComponent(btnAddPotatoesBurguer, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtDescriptionBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jPapasH)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnAddBurger)
                                 .addGap(11, 11, 11))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -629,7 +612,7 @@ public class Menufrm extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(JSLotBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -639,11 +622,7 @@ public class Menufrm extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel18)
-                                .addComponent(txtDescriptionBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -658,9 +637,13 @@ public class Menufrm extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jcAdditionalBurguer, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPapasH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAddPotatoesBurguer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(52, 52, 52)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(txtDescriptionBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -678,7 +661,7 @@ public class Menufrm extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel23)
                         .addComponent(txtDescriptionPotatoes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("HAMBURGUESAS Y PAPAS", jPanel3);
@@ -806,7 +789,7 @@ public class Menufrm extends javax.swing.JFrame {
                                 .addComponent(jLabel27)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtDescriptionDrink, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -895,7 +878,7 @@ public class Menufrm extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1054,7 +1037,7 @@ public class Menufrm extends javax.swing.JFrame {
                             .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnDeleteProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -1074,27 +1057,12 @@ public class Menufrm extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnDeleteProductActionPerformed
 
-    private void btnAddPotatoesBurguerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPotatoesBurguerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddPotatoesBurguerActionPerformed
-
-    private void btnAddPotatoesAdditionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPotatoesAdditionalActionPerformed
-
-    }//GEN-LAST:event_btnAddPotatoesAdditionalActionPerformed
-
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
         CtrlPrincipal principal = new CtrlPrincipal();
         principal.Login();
         this.dispose();
     }//GEN-LAST:event_btnLogOutActionPerformed
-
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
-        CtrlPrincipal principal = new CtrlPrincipal();
-        principal.User();
-        this.dispose();
-    }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTicketActionPerformed
         CtrlPrincipal ctrlPrin = new CtrlPrincipal();
@@ -1143,10 +1111,7 @@ public class Menufrm extends javax.swing.JFrame {
     public javax.swing.JButton btnAddDrink;
     public javax.swing.JButton btnAddPackages;
     public javax.swing.JButton btnAddPotatoes;
-    public javax.swing.JButton btnAddPotatoesAdditional;
-    public javax.swing.JButton btnAddPotatoesBurguer;
     public javax.swing.JButton btnDeleteProduct;
-    public javax.swing.JButton btnHome;
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnLogOut;
     public javax.swing.JButton btnPagar;
@@ -1206,6 +1171,7 @@ public class Menufrm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    public javax.swing.JRadioButton jPapasH;
     public javax.swing.JSpinner jSLotDesserts;
     public javax.swing.JSpinner jSLotDrink;
     public javax.swing.JSpinner jSLotPackages;
@@ -1221,6 +1187,7 @@ public class Menufrm extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jcPackages;
     public javax.swing.JComboBox<String> jcPotatoes;
     public javax.swing.JComboBox<String> jcTypeBurger;
+    public javax.swing.JRadioButton jrPapas;
     public javax.swing.JSpinner jsLotBoneless;
     public javax.swing.JSpinner jsLotPotatoes;
     private javax.swing.JLabel lblDate;

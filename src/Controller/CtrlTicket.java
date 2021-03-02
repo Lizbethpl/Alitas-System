@@ -205,7 +205,7 @@ public class CtrlTicket{
             //System.out.println(myListP);
             //System.out.println(mySecondListP);
             for (int i = 0; i < lista.size(); i++) {
-                printData += mySecondList.get(i) +" "+myList.get(i) + " extras: "+ myTrheeList.get(i)+"\n";              
+                printData += mySecondList.get(i) +" "+myList.get(i) + ":"+ myTrheeList.get(i)+"\n\n";              
             }   
             printC();
     }  

@@ -48,7 +48,7 @@ public class CtrlUser implements ActionListener {
     public void listar(JTable tabla){
         modelo=(DefaultTableModel)tabla.getModel();
         List <User> lista = modC.Listar();
-        Object [] object = new Object[8];
+        Object [] object = new Object[9];
         for (int i = 0; i < lista.size(); i++) {
             object[0]= lista.get(i).getId();
             object[1]= lista.get(i).getName();
@@ -58,6 +58,7 @@ public class CtrlUser implements ActionListener {
             object[5]= lista.get(i).getGender();
             object[6]= lista.get(i).getDateRegister();
             object[7]= lista.get(i).getPassword();
+            object[8]= lista.get(i).getId_Tipo();
             modelo.addRow(object);
         }
         frmU.jUsers.setModel(modelo);
@@ -111,6 +112,8 @@ public class CtrlUser implements ActionListener {
         }
         
         if(e.getSource() == frmU.btnUpdate){
+            
+            String tipo = (String) frmU.jcUsers.getSelectedItem();
             modU.setName(frmU.txtName.getText());
             modU.setLastNameP(frmU.txtLastNameP.getText());
             modU.setLastNameM(frmU.txtLastNameM.getText());
@@ -118,6 +121,7 @@ public class CtrlUser implements ActionListener {
             modU.setGender(frmU.gender());
             modU.setDateRegister(datS.getDateSys());
             modU.setPassword(frmU.txtPassword.getText());
+            modU.setId_Tipo(Integer.parseInt(tipo));
             modU.setId(Integer.parseInt(frmU.txtID.getText()));
             
             if(modC.UpdateD(modU)){

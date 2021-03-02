@@ -52,6 +52,7 @@ public class Productsfrm extends javax.swing.JFrame {
             Logger.getLogger(Productsfrm.class.getName()).log(Level.SEVERE, null, ex);
         
        }
+        
        txtIdProduct.setVisible(false);
        
     }

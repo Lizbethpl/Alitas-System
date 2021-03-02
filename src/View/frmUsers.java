@@ -275,10 +275,10 @@ public class frmUsers extends javax.swing.JFrame {
 
         jUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Apellido Paterno", "Apellido Materno", "Número", "Sexo", "Fecha", "Pass"
+                "ID", "Nombre", "Apellido Paterno", "Apellido Materno", "Número", "Sexo", "Fecha", "Pass", "Id"
             }
         ));
         jUsers.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -611,12 +611,14 @@ public class frmUsers extends javax.swing.JFrame {
             String gender = (String) jUsers.getValueAt(fila, 5);
             String date = (String) jUsers.getValueAt(fila, 6);
             String pass = (String) jUsers.getValueAt(fila, 7);
+            //String tipo = (String) jUsers.getValueAt(fila, 8);
             txtID.setText(""+id);
             txtName.setText(name);
             txtLastNameP.setText(paterno);
             txtLastNameM.setText(materno);
             txtPhoneNumber.setText(phone);
             txtPassword.setText(pass);
+            //jcUsers.setSelectedItem(tipo);
             
     }//GEN-LAST:event_jUsersMouseClicked
 

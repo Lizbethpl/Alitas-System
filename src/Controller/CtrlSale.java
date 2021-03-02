@@ -47,8 +47,8 @@ public class CtrlSale implements ActionListener {
         this.frmsale.btnAddDesserts.addActionListener(this);
         this.frmsale.btnTotal.addActionListener(this);
         this.frmsale.btnLimpiar.addActionListener(this);
-        this.frmsale.btnAddPotatoesAdditional.addActionListener(this);
-        this.frmsale.btnAddPotatoesBurguer.addActionListener(this);
+        //this.frmsale.btnAddPotatoesAdditional.addActionListener(this);
+        //this.frmsale.btnAddPotatoesBurguer.addActionListener(this);
         this.frmsale.btnDeleteProduct.addActionListener(this);
         this.frmsale.btnAddPackages.addActionListener(this);
         this.frmsale.btnPagar.addActionListener(this);
@@ -113,15 +113,15 @@ public class CtrlSale implements ActionListener {
             listar(frmsale.jSale);
             limpiarCajas();
         }
-        if (e.getSource()== frmsale.btnAddPotatoesAdditional) {
-            agregarPapasExtra();
-            limpiarTabla();
-            listar(frmsale.jSale);
-        }if (e.getSource()== frmsale.btnAddPotatoesBurguer) {
-            agregarPapasExtra();
-            limpiarTabla();
-            listar(frmsale.jSale);
-        }
+//        if (e.getSource()== frmsale.btnAddPotatoesAdditional) {
+//            agregarPapasExtra();
+//            limpiarTabla();
+//            listar(frmsale.jSale);}
+//        if (e.getSource()== frmsale.btnAddPotatoesBurguer) {
+//            agregarPapasExtra();
+//            limpiarTabla();
+//            listar(frmsale.jSale);
+//        }
         if (e.getSource()== frmsale.btnAddPackages) {
             agregarPackages();
             limpiarTabla();
@@ -145,28 +145,31 @@ public class CtrlSale implements ActionListener {
 //    }
     void limpiarCajas(){
         frmsale.jcFlavorsAlitas.setSelectedIndex(0);
-        frmsale.jSpLotAlitas.setValue(0);
+        frmsale.jSpLotAlitas.setValue(1);
         frmsale.txtDescriptionAlitas.setText(null);
         frmsale.jcFlavorsB.setSelectedIndex(0);
-        frmsale.jsLotBoneless.setValue(0);
+        frmsale.jsLotBoneless.setValue(1);
         frmsale.txtDescriptionBoneless.setText(null);
         frmsale.jcTypeBurger.setSelectedIndex(0);
-        frmsale.JSLotBurger.setValue(0);
+        frmsale.JSLotBurger.setValue(1);
         frmsale.txtDescriptionBurger.setText(null);
         frmsale.jcPotatoes.setSelectedIndex(0);
-        frmsale.jsLotPotatoes.setValue(0);
+        frmsale.jsLotPotatoes.setValue(1);
         frmsale.txtDescriptionPotatoes.setText(null);
         frmsale.jcDrinks.setSelectedIndex(0);
-        frmsale.jSLotDrink.setValue(0);
+        frmsale.jSLotDrink.setValue(1);
         frmsale.txtDescriptionDrink.setText(null);
         frmsale.jcDesserts.setSelectedIndex(0);
-        frmsale.jSLotDesserts.setValue(0);
+        frmsale.jSLotDesserts.setValue(1);
         frmsale.txtDescriptionDesserts.setText(null);
         frmsale.jcPackages.setSelectedIndex(0);
-        frmsale.jSLotPackages.setValue(0);
+        frmsale.jSLotPackages.setValue(1);
         frmsale.txtDescriptionPackages.setText(null);
         
         frmsale.txtTotalPrice.setText(null);
+        frmsale.jrPapas.setSelected(false);
+        frmsale.jPapasH.setSelected(false);
+        
     }
     public void listar(JTable tabla){
         int id = Integer.parseInt(frmsale.txtNumOrder.getText());
@@ -188,6 +191,7 @@ public class CtrlSale implements ActionListener {
         String description = frmsale.txtDescriptionAlitas.getText();
         //Double total = Double.parseDouble(price_alitas * lot);
         
+        //JOptionPane.showInputDialog(frmsale, "Producto agregado!");
         
         Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
         sale.setName_sproduct("ALITAS " + flavor);
@@ -211,17 +215,34 @@ public class CtrlSale implements ActionListener {
         String description = frmsale.txtDescriptionBoneless.getText();
         //Double total = Double.parseDouble(price_alitas * lot);
         Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
-        sale.setName_sproduct("BONELESS "+flavor);
-        sale.setLot_sproduct(lot);
-        sale.setDescription_sproduct(description);
-        sale.setTotal_sproduct(price_boneless * lot);
-        sale.setSales_id_sale(sale_id);
-        int r =csale.register(sale);
-        if (r==1) {
-            JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+        if(frmsale.jrPapas.isSelected()){
+            sale.setName_sproduct("BONELESS "+flavor + " CON PAPAS ");
+            sale.setLot_sproduct(lot);
+            sale.setDescription_sproduct(description);
+            sale.setTotal_sproduct((price_boneless * lot)+10);
+            sale.setSales_id_sale(sale_id);
+            int r =csale.register(sale);
+            if (r==1) {
+                JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+            }else{
+                JOptionPane.showMessageDialog(frmsale, "Error");
+            }
         }else{
-            JOptionPane.showMessageDialog(frmsale, "Error");
-        }
+                sale.setName_sproduct("BONELESS "+flavor);
+            sale.setLot_sproduct(lot);
+            sale.setDescription_sproduct(description);
+            sale.setTotal_sproduct((price_boneless * lot));
+            sale.setSales_id_sale(sale_id);
+            int r =csale.register(sale);
+            if (r==1) {
+                JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+            }else{
+                JOptionPane.showMessageDialog(frmsale, "Error");
+            }
+            }
+        
+        
+        
     }
     public void agregarHamburguesa(){       
         String typeburger = (String) frmsale.jcTypeBurger.getSelectedItem();
@@ -230,8 +251,38 @@ public class CtrlSale implements ActionListener {
         Double price_boneless = csale.priceBurger(typeburger);
         Integer lot = (Integer) frmsale.JSLotBurger.getValue();
         String description = frmsale.txtDescriptionBurger.getText();
-        //Double total = Double.parseDouble(price_alitas * lot);       
-        if (Additionalburger.equals("EXTRAS")) {
+        //Double total = Double.parseDouble(price_alitas * lot);  
+        
+        if(frmsale.jPapasH.isSelected()){
+            if (Additionalburger.equals("EXTRAS")) {
+            Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+            sale.setName_sproduct(typeburger + "CON PAPAS");
+            sale.setLot_sproduct(lot);
+            sale.setDescription_sproduct(description);
+            sale.setTotal_sproduct((price_boneless * lot)+10);
+            sale.setSales_id_sale(sale_id);
+            int r =csale.register(sale);
+            if (r==1) {
+                JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+            }else{
+                JOptionPane.showMessageDialog(frmsale, "Error");
+            }
+        }else{
+            Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
+            sale.setName_sproduct(typeburger + " "+Additionalburger + " CON PAPAS");
+            sale.setLot_sproduct(lot);
+            sale.setDescription_sproduct(description);
+            sale.setTotal_sproduct(((price_boneless * lot)+ priceAdditional)+10);
+            sale.setSales_id_sale(sale_id);
+            int r =csale.register(sale);
+            if (r==1) {
+                JOptionPane.showMessageDialog(frmsale, "Producto agregado!");
+            }else{
+                JOptionPane.showMessageDialog(frmsale, "Error");
+            }
+        } 
+        }else {
+            if (Additionalburger.equals("EXTRAS")) {
             Integer sale_id = Integer.parseInt( frmsale.txtNumOrder.getText());
             sale.setName_sproduct(typeburger);
             sale.setLot_sproduct(lot);
@@ -257,7 +308,9 @@ public class CtrlSale implements ActionListener {
             }else{
                 JOptionPane.showMessageDialog(frmsale, "Error");
             }
-        }       
+        } 
+        }
+              
     }
     public void agregarPapas(){       
         String typepotatoes = (String) frmsale.jcPotatoes.getSelectedItem();

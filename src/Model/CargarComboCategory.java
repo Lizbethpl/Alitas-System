@@ -33,11 +33,11 @@ public class CargarComboCategory extends Conexion{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }finally{
-             if (conn!= null) {
-                 conn.close();
-            }
-        }
+        }/*finally{
+            try{ps.close();}catch (Exception e){} 
+            try{conn.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
+        }*/
     }
     public void consultFlavor(JComboBox cbxFlavor) throws SQLException{
         PreparedStatement ps = null;

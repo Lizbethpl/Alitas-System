@@ -25,7 +25,7 @@ public class CtrlPrintTicket {
     //Ticket attribute content
     private String contentTicket = "            SNACKS \n "+
     "{{nameLocal}}\n" +    
-    "Av. Zeus 300, Pachuca Hgo\n"+
+    "Av. Zeus 304, Pachuca Hgo\n"+
     "Tel: 771 238 6930\n"+
     "=============================\n"+
     "Nombre: {{clientName}}\n"+
@@ -107,7 +107,7 @@ public class CtrlPrintTicket {
     //Imprimimos dentro de un try 
     try {
       //El metodo print imprime
-      job.print(doc, null);
+      //job.print(doc, null);
 
     } catch (Exception er) {
         JOptionPane.showMessageDialog(null,"Error al imprimir: " + er.getMessage());
@@ -135,7 +135,7 @@ public class CtrlPrintTicket {
     DocPrintJob job = service.createPrintJob();
 
     try {
-      job.print(doc, null);
+      //job.print(doc, null);
       
         System.out.println("impreso");
     } catch (Exception er) {
