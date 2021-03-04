@@ -32,7 +32,21 @@ import View.frmTicketSave;
 
 import javax.swing.DefaultListModel;
 
-public class CtrlPrincipal {
+/*class Us {
+    User modUs = new User();
+        ConsultUser modC = new ConsultUser();
+        frmUsers frmUs = new frmUsers();
+        DateSys datS = new DateSys();
+        
+    public void User() { 
+     
+        CtrlUser ctrl = new CtrlUser(modUs,modC,frmUs,datS);
+        ctrl.iniciar();
+        frmUs.setVisible(true);
+    }
+}*/
+
+public class CtrlPrincipal{
     /*User modUs;
     Login modLog;   
     FrmLogin frmLog;*/
@@ -48,48 +62,50 @@ public class CtrlPrincipal {
     Products modP = new Products();
     Productsfrm frmProduct = new Productsfrm();
     DefaultTableModel TbModelo = new DefaultTableModel();
-    ConsultProducts modCP = new ConsultProducts();
+    ConsultProducts modCP = new ConsultProducts(); //conexion no cerrada
     
     Package pack = new Package();
     Packagesfrm frmPack = new Packagesfrm();
-    ConsultPackage modPack= new ConsultPackage();
+    ConsultPackage modPack= new ConsultPackage(); //conexion no cerrada
     DefaultTableModel modelo = new DefaultTableModel();
     
     Sale sale = new Sale();
     Menufrm frmsale = new Menufrm();
-    ConsultSale csale = new ConsultSale();
+    ConsultSale csale = new ConsultSale(); // conexion no cerrada
     DefaultTableModel modelos = new DefaultTableModel();
     
     sale_products salep = new sale_products();
-    SaleDetailsfrm frmsaledetails = new SaleDetailsfrm();
+    SaleDetailsfrm frmsaledetails = new SaleDetailsfrm(); // conexion no cerrada
     DefaultListModel modelolist = new DefaultListModel();
     Shift s = new Shift();
     
     sale_products spv = new sale_products();
     SalesViewfrm frmsaleview = new SalesViewfrm();
-    ConsultSaleView csv = new ConsultSaleView();
+    ConsultSaleView csv = new ConsultSaleView(); // conexion no cerrada
     DefaultTableModel modelov = new DefaultTableModel();
     
     Sale sales = new Sale();
-    ConsultSaleViews csvs = new ConsultSaleViews();
+    ConsultSaleViews csvs = new ConsultSaleViews(); // conexion no cerrada, 2 conexiones abiertas
     SalesViewsfrm frmsaleviews = new SalesViewsfrm();
     DefaultTableModel modelovs = new DefaultTableModel();
     
     Additional add = new Additional();
-    ConsultAdditional cadd= new ConsultAdditional();
+    ConsultAdditional cadd= new ConsultAdditional(); //conexion no cerrada
     DefaultTableModel modeloadd = new DefaultTableModel();
     
     DefaultTableModel modTicket = new DefaultTableModel();
     frmTicketSave frmTicket = new frmTicketSave();
     
+    //------------- Conexiones revisadas --------
     public void Login(){
+        //Us us = new Us();
+        //CtrlLogin ctrl = new CtrlLogin(modUs, modLog, frmLog, us);
         CtrlLogin ctrl = new CtrlLogin(modUs, modLog, frmLog);
         ctrl.iniciar();
         frmLog.setVisible(true);
     }
     
-    public void User() {
-            
+    public void User() {            
         CtrlUser ctrl = new CtrlUser(modUs,modC,frmUs,datS);
         ctrl.iniciar();
         frmUs.setVisible(true);
@@ -175,7 +191,7 @@ public class CtrlPrincipal {
     public static void main(String[] args) {
         CtrlPrincipal principal = new CtrlPrincipal();
         principal.Login();
-               
+     
         
     }
     

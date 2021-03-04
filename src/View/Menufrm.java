@@ -39,7 +39,7 @@ public class Menufrm extends javax.swing.JFrame {
      * Creates new form Login
      */
     CargarComboCategory comb = new CargarComboCategory();
-    ConsultSale c = new ConsultSale();
+    ConsultSale c = new ConsultSale(); // Conexion no cerrada
     public Menufrm() {
         initComponents();
         this.setSize(new Dimension(1024, 768));

@@ -44,8 +44,6 @@ public class Login extends Conexion {
     }catch(SQLException ex){
         Logger.getLogger(Login.class.getName()).log(Level.SEVERE,null,ex);
         return false;
+    }        
     }
-         
-    }
-
 }

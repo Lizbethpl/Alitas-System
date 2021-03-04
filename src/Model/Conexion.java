@@ -39,6 +39,7 @@ public class Conexion {
         return con;   
     }
     
+   
     public static void main(String[] args) {
         Conexion cone = new Conexion();
         cone.getConnection();

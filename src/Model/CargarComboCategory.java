@@ -33,11 +33,11 @@ public class CargarComboCategory extends Conexion{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }/*finally{
+        }finally{
             try{ps.close();}catch (Exception e){} 
             try{conn.close();}catch (Exception e){} 
             System.out.println("Conexion cerrada");
-        }*/
+        }
     }
     public void consultFlavor(JComboBox cbxFlavor) throws SQLException{
         PreparedStatement ps = null;
@@ -54,9 +54,9 @@ public class CargarComboCategory extends Conexion{
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }finally{
-             if (conn!= null) {
-                 conn.close();
-            }
+            try{ps.close();}catch (Exception e){} 
+            try{conn.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");        
         }
     }
     public void consultBurger(JComboBox cbxBurger) throws SQLException{
@@ -73,9 +73,9 @@ public class CargarComboCategory extends Conexion{
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }finally{
-             if (conn!= null) {
-                 conn.close();
-            }
+            try{ps.close();}catch (Exception e){} 
+            try{conn.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
     }
     public void consultPotatoes(JComboBox cbxPotatoes) throws SQLException{
@@ -93,9 +93,9 @@ public class CargarComboCategory extends Conexion{
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }finally{
-             if (conn!= null) {
-                 conn.close();
-            }
+            try{ps.close();}catch (Exception e){} 
+            try{conn.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
     }
     public void consultDrinks(JComboBox cbxDrinks) throws SQLException{
@@ -113,9 +113,9 @@ public class CargarComboCategory extends Conexion{
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }finally{
-             if (conn!= null) {
-                 conn.close();
-            }
+            try{ps.close();}catch (Exception e){} 
+            try{conn.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
     }
     public void consultDesserts(JComboBox cbxDesserts) throws SQLException{
@@ -133,9 +133,9 @@ public class CargarComboCategory extends Conexion{
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }finally{
-             if (conn!= null) {
-                 conn.close();
-            }
+            try{ps.close();}catch (Exception e){} 
+            try{conn.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
     }
      public void consultAdditional(JComboBox cbxDesserts) throws SQLException{
@@ -153,9 +153,9 @@ public class CargarComboCategory extends Conexion{
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }finally{
-             if (conn!= null) {
-                 conn.close();
-            }
+            try{ps.close();}catch (Exception e){} 
+            try{conn.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
     }
      public void consultPackages(JComboBox cbxPackages) throws SQLException{
@@ -173,9 +173,9 @@ public class CargarComboCategory extends Conexion{
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }finally{
-             if (conn!= null) {
-                 conn.close();
-            }
+            try{ps.close();}catch (Exception e){} 
+            try{conn.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
     }
 }

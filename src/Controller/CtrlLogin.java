@@ -15,7 +15,8 @@ import Controller.CtrlPrincipal;
 
 
 
-public class CtrlLogin implements ActionListener{
+
+public class CtrlLogin implements ActionListener {
     /*private User modU;*/
 
     private User modUs;
@@ -25,18 +26,17 @@ public class CtrlLogin implements ActionListener{
     DateSys datS = new DateSys();
     CtrlPrincipal principal = new CtrlPrincipal();
     
-    
 
     
     public CtrlLogin(User modUs,Login modLog, FrmLogin frmLog){
         this.modUs = modUs;
         this.modLog = modLog;
         this.frmLog = frmLog;
+        //this.us = us;
         
-        
+
         this.frmLog.btnInto.addActionListener(this);
         this.frmLog.btnCancel.addActionListener(this);
-        System.out.println("Ec");
     }
     
     public void iniciar(){
@@ -53,13 +53,15 @@ public class CtrlLogin implements ActionListener{
                 if(modUs.getId_Tipo()==1){
                     frmLog.dispose();
                     principal.User();
-                    /*frmUs.setVisible(true); */            
+                    //us.User();
+                    /*frmUs.setVisible(true); */           
                 
                     JOptionPane.showMessageDialog(null,"Ingreso exitoso");
                 }else{if(modUs.getId_Tipo()==2){
                     frmLog.dispose();
+                    
                     principal.Sale();
-                    /*frmUs.setVisible(true); */            
+                    /*frmUs.setVisible(true);  */           
                 
                     JOptionPane.showMessageDialog(null,"Ingreso exitoso");
                 }
