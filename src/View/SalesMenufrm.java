@@ -279,8 +279,6 @@ public class SalesMenufrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductsActionPerformed
-        // TODO add your handling code here:
-        
         CtrlPrincipal principal = new CtrlPrincipal();
         principal.Sale();
         this.dispose();

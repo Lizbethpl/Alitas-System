@@ -16,11 +16,12 @@ import java.util.List;
  * @author Dell
  */
 public class ConsultSaleViews extends Conexion {
-    PreparedStatement ps = null;
-    ResultSet rs= null;
-    Connection con = getConnection();
+
     
     public List Listar (int id){
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
         
         List <Sale> datos = new ArrayList<>();
         String sql = "select sales_id_sale, name_sproduct, lot_sproduct, description_sproduct, total_sproduct from sales_product where sales_id_sale ="+id;
@@ -38,6 +39,10 @@ public class ConsultSaleViews extends Conexion {
             }
             
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
         return datos;
     }

@@ -16,11 +16,13 @@ import java.util.List;
  * @author Dell
  */
 public class ConsultAdditional extends Conexion{
-    PreparedStatement ps = null;
-    ResultSet rs= null;
-    Connection con = getConnection();
+    
     
     public List Listar (){
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+    
         List <Additional> datos = new ArrayList<>();
         String sql = "SELECT * FROM additional";
         try {
@@ -36,10 +38,18 @@ public class ConsultAdditional extends Conexion{
             }
             
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
         return datos;
     }
     public int register(Additional add){
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+        
         String sql = "INSERT INTO additional (name_additional,price_additional) "
                 + "VALUES (?,?)";
         
@@ -50,10 +60,18 @@ public class ConsultAdditional extends Conexion{
             ps.setDouble(2, add.getPrice_additional());
             ps.executeUpdate();
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }    
         return 1;
     }
     public int modify(Additional p){
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+        
         int r=0;
         String sql = "UPDATE additional SET name_additional=?,price_additional=? WHERE id_Additional=?";
         
@@ -70,16 +88,28 @@ public class ConsultAdditional extends Conexion{
                 return 0;
             }
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }    
         return r;
     }
     public void delete(int id) {
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+        
         String sql = "DELETE FROM additional WHERE id_Additional="+id;
         try {
             con=getConnection();
             ps= con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
     }
 }

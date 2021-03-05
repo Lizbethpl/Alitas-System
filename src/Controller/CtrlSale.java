@@ -28,10 +28,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CtrlSale implements ActionListener {
     
-    Sale sale = new Sale();
-    ConsultSale csale= new ConsultSale();
-    Menufrm frmsale = new Menufrm();
-    DefaultTableModel modelo = new DefaultTableModel(); 
+    Sale sale;
+    ConsultSale csale;
+    Menufrm frmsale;
+    DefaultTableModel modelo; 
     sale_products salep = new sale_products();
     DateSys date= new DateSys();
     public CtrlSale(Sale sale, ConsultSale csale, Menufrm frmsale,DefaultTableModel modelo) {

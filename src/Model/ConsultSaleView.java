@@ -16,11 +16,15 @@ import java.util.List;
  * @author Dell
  */
 public class ConsultSaleView extends Conexion {
-    PreparedStatement ps = null;
+    /*PreparedStatement ps = null;
     ResultSet rs= null;
-    Connection con = getConnection();
+    Connection con = getConnection();*/
     public List Listar (){
         
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+
         List <sale_products> datos = new ArrayList<>();
         String sql = "select date_sale , id_sales_product, client_sale, total_sale from sales;";
         try {
@@ -36,10 +40,18 @@ public class ConsultSaleView extends Conexion {
             }
             
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
         return datos;
     }
     public List ListarProductos (int id){
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+
         
         List <Sale> datos = new ArrayList<>();
         String sql = "select name_sproduct from sales_product where sales_id_sale ="+id;
@@ -53,10 +65,18 @@ public class ConsultSaleView extends Conexion {
             }
             
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
         return datos;
     }
     public void delete(int id) {
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+        
         String sql = "delete sales,sales_product\n" +
                     "from sales\n" +
                     "join sales_product\n" +
@@ -67,6 +87,10 @@ public class ConsultSaleView extends Conexion {
             ps= con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
     }
 }

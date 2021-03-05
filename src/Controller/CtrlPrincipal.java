@@ -60,22 +60,22 @@ public class CtrlPrincipal{
     
     
     Products modP = new Products();
-    Productsfrm frmProduct = new Productsfrm();
+    Productsfrm frmProduct = new Productsfrm(); 
     DefaultTableModel TbModelo = new DefaultTableModel();
-    ConsultProducts modCP = new ConsultProducts(); //conexion no cerrada
+    ConsultProducts modCP = new ConsultProducts(); //conexion no cerrada --- Cerrada
     
     Package pack = new Package();
     Packagesfrm frmPack = new Packagesfrm();
-    ConsultPackage modPack= new ConsultPackage(); //conexion no cerrada
+    ConsultPackage modPack= new ConsultPackage(); //conexion no cerrada -- Cerrada
     DefaultTableModel modelo = new DefaultTableModel();
     
     Sale sale = new Sale();
     Menufrm frmsale = new Menufrm();
-    ConsultSale csale = new ConsultSale(); // conexion no cerrada
+    ConsultSale csale = new ConsultSale(); // conexion no cerrada  -- Cerrada
     DefaultTableModel modelos = new DefaultTableModel();
     
     sale_products salep = new sale_products();
-    SaleDetailsfrm frmsaledetails = new SaleDetailsfrm(); // conexion no cerrada
+    SaleDetailsfrm frmsaledetails = new SaleDetailsfrm(); // conexion no cerrada -- Parece estar cerrada
     DefaultListModel modelolist = new DefaultListModel();
     Shift s = new Shift();
     
@@ -97,6 +97,10 @@ public class CtrlPrincipal{
     frmTicketSave frmTicket = new frmTicketSave();
     
     //------------- Conexiones revisadas --------
+    
+  
+    
+    
     public void Login(){
         //Us us = new Us();
         //CtrlLogin ctrl = new CtrlLogin(modUs, modLog, frmLog, us);

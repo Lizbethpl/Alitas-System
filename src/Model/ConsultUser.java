@@ -35,7 +35,13 @@ public class ConsultUser extends Conexion {
             }
             
         } catch (Exception e) {
-        }
+        }finally{
+        try {
+            con.close();
+        }catch(SQLException e){
+            System.out.println( e);
+            }
+        } 
         return datos;
     }
     

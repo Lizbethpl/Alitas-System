@@ -32,7 +32,6 @@ public class CtrlLogin implements ActionListener {
         this.modUs = modUs;
         this.modLog = modLog;
         this.frmLog = frmLog;
-        //this.us = us;
         
 
         this.frmLog.btnInto.addActionListener(this);
@@ -59,7 +58,7 @@ public class CtrlLogin implements ActionListener {
                     JOptionPane.showMessageDialog(null,"Ingreso exitoso");
                 }else{if(modUs.getId_Tipo()==2){
                     frmLog.dispose();
-                    
+                    principal.User();
                     principal.Sale();
                     /*frmUs.setVisible(true);  */           
                 

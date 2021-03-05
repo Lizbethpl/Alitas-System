@@ -21,11 +21,15 @@ import javax.swing.JTable;
  */
 public class ConsultProducts extends Conexion {
 
-    PreparedStatement ps = null;
+    /*PreparedStatement ps = null;
     ResultSet rs= null;
-    Connection con = getConnection();
+    Connection con = getConnection();*/
    
     public List Listar (){
+        
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
         
         List <Products> datos = new ArrayList<>();
         String sql = "SELECT * FROM products";
@@ -43,10 +47,18 @@ public class ConsultProducts extends Conexion {
             }
             
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
         return datos;
     }
     public int register(Products p){
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+        
         String sql = "INSERT INTO products (name_product,category_product,flavor_product,price_product) "
                 + "VALUES (?,?,?,?)";
         
@@ -59,10 +71,18 @@ public class ConsultProducts extends Conexion {
             ps.setDouble(4, p.getPriceProduct());
             ps.executeUpdate();
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }    
         return 1;
     }
     public int modify(Products p){
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+        
         int r=0;
         String sql = "UPDATE products SET name_product=?, category_product=?,flavor_product=?,price_product=? WHERE Id_product=?";
         
@@ -81,16 +101,28 @@ public class ConsultProducts extends Conexion {
                 return 0;
             }
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }    
         return r;
     }
     public void delete(int id) {
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+        
         String sql = "DELETE FROM products WHERE Id_product="+id;
         try {
             con=getConnection();
             ps= con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
         }
     }
 }
