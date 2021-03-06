@@ -522,11 +522,7 @@ public class ConsultSale extends Conexion{
         ResultSet rs= null;
         Connection con = getConnection();
         
-        String sql = "delete sales,sales_product\n" +
-                    "from sales\n" +
-                    "join sales_product\n" +
-                    "on sales.id_sales_product=sales_product.sales_id_sale\n" +
-                    "where sales_product.sales_id_sale="+id;
+        String sql = "Call deletesale("+id+")";
         try {
             con=getConnection();
             ps= con.prepareStatement(sql);
