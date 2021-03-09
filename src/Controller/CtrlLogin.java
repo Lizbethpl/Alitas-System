@@ -58,7 +58,7 @@ public class CtrlLogin implements ActionListener {
                     JOptionPane.showMessageDialog(null,"Ingreso exitoso");
                 }else{if(modUs.getId_Tipo()==2){
                     frmLog.dispose();
-                    principal.User();
+                    //principal.User();
                     principal.Sale();
                     /*frmUs.setVisible(true);  */           
                 
