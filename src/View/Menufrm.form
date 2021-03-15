@@ -368,7 +368,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jcFlavorsAlitas" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jcFlavorsAlitas" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jSpLotAlitas" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                                   <Component id="btnAddAlitas" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                               </Group>
@@ -484,6 +484,9 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new Dimension(52,40)" type="code"/>
                 </Property>
               </Properties>
               <AuxValues>

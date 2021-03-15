@@ -18,8 +18,8 @@ import java.util.logging.Logger;
 public class Conexion {
     private final String base = "db_alitas";
     private final String user = "root";
-    private final String password = "Password12345";
-    private final String url = "jdbc:mysql://localhost/db_Alitas?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private final String password = "password";
+    private final String url = "jdbc:mysql://localhost/db_alitas?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     
     private Connection con = null;
     

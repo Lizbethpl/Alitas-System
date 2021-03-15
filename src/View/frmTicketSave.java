@@ -25,9 +25,9 @@ public class frmTicketSave extends javax.swing.JFrame {
         setDefaultCloseOperation(0);
         
     }
-    public static String clientName = "";
-    public static int id;
-    public static int fila;
+//    public static String clientName = "";
+//    public static int id;
+//    public static int fila;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,20 +130,21 @@ public class frmTicketSave extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-     
+    
+   
      
     private void jTicketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTicketMouseClicked
-        fila = jTicket.getSelectedRow();
-        clientName = (String)jTicket.getValueAt(fila,0).toString();    
-        id = Integer.parseInt((String)jTicket.getValueAt(fila,1).toString());
-        txtNoClient.setText(""+id);
-            
+        
     }//GEN-LAST:event_jTicketMouseClicked
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         CtrlPrincipal ctrPrin = new CtrlPrincipal();
-        System.out.println("id "+ id);
-        System.out.println("cliente "+ clientName);
+//        System.out.println("id "+ id);
+//        System.out.println("cliente "+ clientName);
+        int fila = jTicket.getSelectedRow();
+        String clientName = (String)jTicket.getValueAt(fila,0).toString();
+        int id = Integer.parseInt((String)jTicket.getValueAt(fila,1).toString());
+        //String clientName = txtNameClient.getText();
         if (id == 0){
             JOptionPane.showMessageDialog(null, "Selecciona la orden nuevamente");
         }else{
@@ -151,7 +152,7 @@ public class frmTicketSave extends javax.swing.JFrame {
             ctrPrin.deleteTicket(id);
             DefaultTableModel tblModel = (DefaultTableModel) jTicket.getModel();      
             tblModel.removeRow(jTicket.getSelectedRow());
-            
+            txtNoClient.setText("");
         }
 
     }//GEN-LAST:event_btnPrintActionPerformed
