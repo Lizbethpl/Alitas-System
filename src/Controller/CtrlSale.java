@@ -57,6 +57,7 @@ public class CtrlSale implements ActionListener {
         frmsale.jSale.getColumnModel().getColumn(2).setMaxWidth(0);
         frmsale.jSale.getColumnModel().getColumn(2).setMinWidth(0);
         frmsale.jSale.getColumnModel().getColumn(2).setPreferredWidth(0);
+        this.frmsale.btnPagar.setEnabled(false);
     }
      
     @Override
@@ -100,6 +101,7 @@ public class CtrlSale implements ActionListener {
             
         }if (e.getSource()== frmsale.btnTotal) {
             frmsale.txtTotalPrice.setText(Double.toString(csale.totalPrice(Integer.parseInt(frmsale.txtNumOrder.getText()))));
+            frmsale.btnPagar.setEnabled(true);
             
         }if (e.getSource()== frmsale.btnLimpiar) {
             eliminar();
