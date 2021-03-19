@@ -61,19 +61,35 @@ public class Menufrm extends javax.swing.JFrame {
             Logger.getLogger(Productsfrm.class.getName()).log(Level.SEVERE, null, ex);
         
        }
-//        jSale.getColumnModel().getColumn(2).setMaxWidth(0);
-//        jSale.getColumnModel().getColumn(2).setMinWidth(0);
-//        jSale.getColumnModel().getColumn(2).setPreferredWidth(0);
-        SpinnerNumberModel modelo = new SpinnerNumberModel();
-        modelo.setMinimum(1);
-        modelo.setValue(1);
-        jSpLotAlitas.setModel(modelo);
-        jsLotBoneless.setModel(modelo);
-        JSLotBurger.setModel(modelo);
-        jsLotPotatoes.setModel(modelo);
-        jSLotDrink.setModel(modelo);
-        jSLotDesserts.setModel(modelo);
-        jSLotPackages.setModel(modelo);
+
+        SpinnerNumberModel modeloAlitas = new SpinnerNumberModel();
+        modeloAlitas.setMinimum(1);
+        modeloAlitas.setValue(1);
+        SpinnerNumberModel modeloBoneless = new SpinnerNumberModel();
+        modeloBoneless.setMinimum(1);
+        modeloBoneless.setValue(1);
+        SpinnerNumberModel modeloBurger = new SpinnerNumberModel();
+        modeloBurger.setMinimum(1);
+        modeloBurger.setValue(1);
+        SpinnerNumberModel modeloPotatoes = new SpinnerNumberModel();
+        modeloPotatoes.setMinimum(1);
+        modeloPotatoes.setValue(1);
+        SpinnerNumberModel modeloDrink = new SpinnerNumberModel();
+        modeloDrink.setMinimum(1);
+        modeloDrink.setValue(1);
+        SpinnerNumberModel modeloDessert = new SpinnerNumberModel();
+        modeloDessert.setMinimum(1);
+        modeloDessert.setValue(1);
+        SpinnerNumberModel modeloPackage = new SpinnerNumberModel();
+        modeloPackage.setMinimum(1);
+        modeloPackage.setValue(1);
+        jSpLotAlitas.setModel(modeloAlitas);
+        jsLotBoneless.setModel(modeloBoneless);
+        JSLotBurger.setModel(modeloBurger);
+        jsLotPotatoes.setModel(modeloPotatoes);
+        jSLotDrink.setModel(modeloDrink);
+        jSLotDesserts.setModel(modeloDessert);
+        jSLotPackages.setModel(modeloPackage);
     }
     public static String id = "";
     
