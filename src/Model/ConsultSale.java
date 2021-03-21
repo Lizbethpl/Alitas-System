@@ -334,11 +334,12 @@ public class ConsultSale extends Conexion{
         double price_Packages  =0;
         try {
           
-            String sql=("select price_package from packages where name_package ='"+Packages+"'");
+            String sql=("select price_package,description_package from packages where name_package ='"+Packages+"'");
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();   
             rs.next();
             price_Packages = rs.getInt("price_package");
+            
 
              
         } catch (Exception e) {
@@ -349,6 +350,31 @@ public class ConsultSale extends Conexion{
             System.out.println("Conexion cerrada");
         }
         return price_Packages;
+     }
+    public String DescriptionPackage(String Packages) {
+        PreparedStatement ps = null;
+        ResultSet rs= null;
+        Connection con = getConnection();
+        
+        String Description_Packages  ="";
+        try {
+          
+            String sql=("select description_package from packages where name_package ='"+Packages+"'");
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();   
+            rs.next();
+            Description_Packages = rs.getString("description_package");
+            
+
+             
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }finally{
+            try{ps.close();}catch (Exception e){} 
+            try{con.close();}catch (Exception e){} 
+            System.out.println("Conexion cerrada");
+        }
+        return Description_Packages;
      }
     public double totalPrice(int id) {
         PreparedStatement ps = null;
@@ -517,6 +543,7 @@ public class ConsultSale extends Conexion{
         return datos;
         
     }
+    
     public void deleteSale(int id) {
         PreparedStatement ps = null;
         ResultSet rs= null;

@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -54,10 +54,12 @@ public class CtrlSale implements ActionListener {
         this.frmsale.btnPagar.addActionListener(this);
         //listar(frmsale.jSale);
         listarOrden();
+        DescPackages();
         frmsale.jSale.getColumnModel().getColumn(2).setMaxWidth(0);
         frmsale.jSale.getColumnModel().getColumn(2).setMinWidth(0);
         frmsale.jSale.getColumnModel().getColumn(2).setPreferredWidth(0);
         this.frmsale.btnPagar.setEnabled(false);
+        this.frmsale.jcPackages.addActionListener(this);
     }
      
     @Override
@@ -131,6 +133,9 @@ public class CtrlSale implements ActionListener {
         }
         if (e.getSource()== frmsale.btnPagar) {
             agregarVentaProducto();
+        }
+        if (e.getSource()== frmsale.jcPackages) {
+            DescPackages();
         }
     }
     void limpiarTabla() {
@@ -458,4 +463,13 @@ public class CtrlSale implements ActionListener {
         frmsale.txtNumOrder.setText(String.valueOf(orden));
         frmsale.txtNameClient.setText("Orden " + orden);
     }
+    
+    public void DescPackages(){
+        String typePackages = (String) frmsale.jcPackages.getSelectedItem();
+        
+        String description = csale.DescriptionPackage(typePackages);
+        frmsale.txtDescripctionPack.setText(description);
+        
+    }
+    
 }
