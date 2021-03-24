@@ -468,8 +468,8 @@ public class CtrlSale implements ActionListener {
         String typePackages = (String) frmsale.jcPackages.getSelectedItem();
         
         String description = csale.DescriptionPackage(typePackages);
-        frmsale.txtDescripctionPack.setText(description);
-        
+        //frmsale.txtDescripctionPack.setText(description);
+        frmsale.txaDescriptionPack.setText(description);
     }
     
 }

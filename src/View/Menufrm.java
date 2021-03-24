@@ -200,7 +200,8 @@ public class Menufrm extends javax.swing.JFrame {
         jSLotPackages = new javax.swing.JSpinner();
         jLabel40 = new javax.swing.JLabel();
         btnAddPackages = new javax.swing.JButton();
-        txtDescripctionPack = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txaDescriptionPack = new javax.swing.JTextArea();
         jPanel12 = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
         txtTotalPrice = new javax.swing.JTextField();
@@ -890,9 +891,12 @@ public class Menufrm extends javax.swing.JFrame {
         btnAddPackages.setForeground(new java.awt.Color(255, 255, 255));
         btnAddPackages.setText("AÑADIR");
 
-        txtDescripctionPack.setBackground(new java.awt.Color(240, 144, 38));
-        txtDescripctionPack.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtDescripctionPack.setForeground(new java.awt.Color(255, 255, 255));
+        txaDescriptionPack.setBackground(new java.awt.Color(240, 144, 38));
+        txaDescriptionPack.setColumns(20);
+        txaDescriptionPack.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txaDescriptionPack.setForeground(new java.awt.Color(255, 255, 255));
+        txaDescriptionPack.setRows(5);
+        jScrollPane1.setViewportView(txaDescriptionPack);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -900,8 +904,8 @@ public class Menufrm extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(41, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtDescripctionPack)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -945,9 +949,9 @@ public class Menufrm extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel38)
                         .addComponent(txtDescriptionPackages, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(89, 89, 89)
-                .addComponent(txtDescripctionPack, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("PAQUETES ", jPanel5);
@@ -1202,6 +1206,7 @@ public class Menufrm extends javax.swing.JFrame {
     public javax.swing.JSpinner jSLotDrink;
     public javax.swing.JSpinner jSLotPackages;
     public javax.swing.JTable jSale;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JSpinner jSpLotAlitas;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1217,8 +1222,8 @@ public class Menufrm extends javax.swing.JFrame {
     public javax.swing.JSpinner jsLotBoneless;
     public javax.swing.JSpinner jsLotPotatoes;
     private javax.swing.JLabel lblDate;
+    public javax.swing.JTextArea txaDescriptionPack;
     public javax.swing.JTextField txtDate;
-    public javax.swing.JTextField txtDescripctionPack;
     public javax.swing.JTextField txtDescriptionAlitas;
     public javax.swing.JTextField txtDescriptionBoneless;
     public javax.swing.JTextField txtDescriptionBurger;
