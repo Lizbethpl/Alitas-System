@@ -23,12 +23,24 @@ import javax.swing.JOptionPane;
 import Model.ConsultUser;
 import Model.DateSys;
 import Model.User;
+import java.awt.Component;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListCellRenderer.UIResource;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ListCellRenderer;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.plaf.basic.BasicSpinnerUI;
 /**
  *
  * @author toshiba
@@ -90,7 +102,191 @@ public class Menufrm extends javax.swing.JFrame {
         jSLotDrink.setModel(modeloDrink);
         jSLotDesserts.setModel(modeloDessert);
         jSLotPackages.setModel(modeloPackage);
+        
+        jSpLotAlitas.setUI(new BasicSpinnerUI() {
+
+      protected Component createNextButton() {
+        Component c = createArrowButton2(SwingConstants.NORTH);
+        installNextButtonListeners(c);
+        return c;
+      }
+      private Component createArrowButton2(int direction) {
+        JButton b = new BasicArrowButton(direction) {
+          public Dimension getPreferredSize() {
+            //return new Dimension(16, 16);
+            return new Dimension(40, 40);
+          }
+        };
+        Border buttonBorder = UIManager.getBorder(
+            "Spinner.arrowButtonBorder");
+        if (buttonBorder instanceof UIResource) {
+          b.setBorder(new CompoundBorder(buttonBorder, null));
+        } else {
+          b.setBorder(buttonBorder);
+        }
+        b.setInheritsPopupMenu(true);
+        return b;
+      }
+    }); 
+      // Spinner boneless
+      jsLotBoneless.setUI(new BasicSpinnerUI() {
+      protected Component createNextButton() {
+        Component c = createArrowButton2(SwingConstants.NORTH);
+        installNextButtonListeners(c);
+        return c;
+      }
+      private Component createArrowButton2(int direction) {
+        JButton b = new BasicArrowButton(direction) {
+          public Dimension getPreferredSize() {
+            //return new Dimension(16, 16);
+            return new Dimension(40, 40);
+          }
+        };
+        Border buttonBorder = UIManager.getBorder(
+            "Spinner.arrowButtonBorder");
+        if (buttonBorder instanceof UIResource) {
+          b.setBorder(new CompoundBorder(buttonBorder, null));
+        } else {
+          b.setBorder(buttonBorder);
+        }
+        b.setInheritsPopupMenu(true);
+        return b;
+      }
+    });
+    
+    // Spinner Burguer
+      JSLotBurger.setUI(new BasicSpinnerUI() {
+      protected Component createNextButton() {
+        Component c = createArrowButton2(SwingConstants.NORTH);
+        installNextButtonListeners(c);
+        return c;
+      }
+      private Component createArrowButton2(int direction) {
+        JButton b = new BasicArrowButton(direction) {
+          public Dimension getPreferredSize() {
+            //return new Dimension(16, 16);
+            return new Dimension(40, 40);
+          }
+        };
+        Border buttonBorder = UIManager.getBorder(
+            "Spinner.arrowButtonBorder");
+        if (buttonBorder instanceof UIResource) {
+          b.setBorder(new CompoundBorder(buttonBorder, null));
+        } else {
+          b.setBorder(buttonBorder);
+        }
+        b.setInheritsPopupMenu(true);
+        return b;
+      }
+    });
+    
+    // Spinner Potatoes
+      jsLotPotatoes.setUI(new BasicSpinnerUI() {
+      protected Component createNextButton() {
+        Component c = createArrowButton2(SwingConstants.NORTH);
+        installNextButtonListeners(c);
+        return c;
+      }
+      private Component createArrowButton2(int direction) {
+        JButton b = new BasicArrowButton(direction) {
+          public Dimension getPreferredSize() {
+            //return new Dimension(16, 16);
+            return new Dimension(40, 40);
+          }
+        };
+        Border buttonBorder = UIManager.getBorder(
+            "Spinner.arrowButtonBorder");
+        if (buttonBorder instanceof UIResource) {
+          b.setBorder(new CompoundBorder(buttonBorder, null));
+        } else {
+          b.setBorder(buttonBorder);
+        }
+        b.setInheritsPopupMenu(true);
+        return b;
+      }
+    });
+      
+      
+      //Spinner Drink
+      jSLotDrink.setUI(new BasicSpinnerUI() {
+      protected Component createNextButton() {
+        Component c = createArrowButton2(SwingConstants.NORTH);
+        installNextButtonListeners(c);
+        return c;
+      }
+      private Component createArrowButton2(int direction) {
+        JButton b = new BasicArrowButton(direction) {
+          public Dimension getPreferredSize() {
+            //return new Dimension(16, 16);
+            return new Dimension(40, 40);
+          }
+        };
+        Border buttonBorder = UIManager.getBorder(
+            "Spinner.arrowButtonBorder");
+        if (buttonBorder instanceof UIResource) {
+          b.setBorder(new CompoundBorder(buttonBorder, null));
+        } else {
+          b.setBorder(buttonBorder);
+        }
+        b.setInheritsPopupMenu(true);
+        return b;
+      }
+    });
+    
+      //Spinner Dessertrs
+      jSLotDesserts.setUI(new BasicSpinnerUI() {
+      protected Component createNextButton() {
+        Component c = createArrowButton2(SwingConstants.NORTH);
+        installNextButtonListeners(c);
+        return c;
+      }
+      private Component createArrowButton2(int direction) {
+        JButton b = new BasicArrowButton(direction) {
+          public Dimension getPreferredSize() {
+            //return new Dimension(16, 16);
+            return new Dimension(40, 40);
+          }
+        };
+        Border buttonBorder = UIManager.getBorder(
+            "Spinner.arrowButtonBorder");
+        if (buttonBorder instanceof UIResource) {
+          b.setBorder(new CompoundBorder(buttonBorder, null));
+        } else {
+          b.setBorder(buttonBorder);
+        }
+        b.setInheritsPopupMenu(true);
+        return b;
+      }
+    });
+      
+      //Spinner Packages
+      jSLotPackages.setUI(new BasicSpinnerUI() {
+      protected Component createNextButton() {
+        Component c = createArrowButton2(SwingConstants.NORTH);
+        installNextButtonListeners(c);
+        return c;
+      }
+      private Component createArrowButton2(int direction) {
+        JButton b = new BasicArrowButton(direction) {
+          public Dimension getPreferredSize() {
+            //return new Dimension(16, 16);
+            return new Dimension(40, 40);
+          }
+        };
+        Border buttonBorder = UIManager.getBorder(
+            "Spinner.arrowButtonBorder");
+        if (buttonBorder instanceof UIResource) {
+          b.setBorder(new CompoundBorder(buttonBorder, null));
+        } else {
+          b.setBorder(buttonBorder);
+        }
+        b.setInheritsPopupMenu(true);
+        return b;
+      }
+    });  
+   
     }
+    
     public static String id = "";
     
     
@@ -355,7 +551,9 @@ public class Menufrm extends javax.swing.JFrame {
 
         jLabel6.setText("SABORES:");
 
+        jcFlavorsAlitas.setMaximumRowCount(3);
         jcFlavorsAlitas.setPreferredSize(new Dimension(52,40));
+        jcFlavorsAlitas.setRenderer(new CustomComboBox());
 
         jLabel8.setText("CANTIDAD:");
 
@@ -395,6 +593,9 @@ public class Menufrm extends javax.swing.JFrame {
         jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 161, 34)));
 
         jLabel12.setText("SABORES:");
+
+        jcFlavorsB.setMaximumRowCount(3);
+        jcFlavorsB.setRenderer(new CustomComboBox());
 
         jLabel13.setText("CANTIDAD:");
 
@@ -530,6 +731,9 @@ public class Menufrm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jcTypeBurger.setMaximumRowCount(3);
+        jcTypeBurger.setRenderer(new CustomComboBox());
+
         jLabel18.setText("DESCRPCIÓN:");
 
         jLabel19.setText("CANTIDAD:");
@@ -566,6 +770,9 @@ public class Menufrm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jcPotatoes.setMaximumRowCount(3);
+        jcPotatoes.setRenderer(new CustomComboBox());
+
         jLabel22.setText("COMBINACIÓN");
 
         jLabel23.setText("DESCRPCIÓN:");
@@ -576,6 +783,9 @@ public class Menufrm extends javax.swing.JFrame {
         btnAddPotatoes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnAddPotatoes.setForeground(new java.awt.Color(255, 255, 255));
         btnAddPotatoes.setText("AÑADIR");
+
+        jcAdditionalBurguer.setMaximumRowCount(3);
+        jcAdditionalBurguer.setRenderer(new CustomComboBox());
 
         jPapasH.setText("Agregar papas");
 
@@ -713,6 +923,9 @@ public class Menufrm extends javax.swing.JFrame {
 
         jLabel26.setText("TIPO:");
 
+        jcDrinks.setMaximumRowCount(3);
+        jcDrinks.setRenderer(new CustomComboBox());
+
         jLabel27.setText("DESCRPCIÓN:");
 
         jLabel28.setText("CANTIDAD:");
@@ -744,6 +957,9 @@ public class Menufrm extends javax.swing.JFrame {
                 .addComponent(jLabel29)
                 .addContainerGap())
         );
+
+        jcDesserts.setMaximumRowCount(3);
+        jcDesserts.setRenderer(new CustomComboBox());
 
         jLabel30.setText("CANTIDAD:");
 
@@ -882,6 +1098,9 @@ public class Menufrm extends javax.swing.JFrame {
 
         jLabel37.setText("TIPO:");
 
+        jcPackages.setMaximumRowCount(3);
+        jcPackages.setRenderer(new CustomComboBox());
+
         jLabel38.setText("DESCRPCIÓN:");
 
         jLabel40.setText("CANTIDAD:");
@@ -902,11 +1121,10 @@ public class Menufrm extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -925,8 +1143,11 @@ public class Menufrm extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel38)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtDescriptionPackages, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(31, 31, 31))
+                                .addComponent(txtDescriptionPackages, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -949,9 +1170,9 @@ public class Menufrm extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel38)
                         .addComponent(txtDescriptionPackages, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         jTabbedPane1.addTab("PAQUETES ", jPanel5);
@@ -1072,7 +1293,27 @@ public class Menufrm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public class CustomComboBox extends JLabel implements ListCellRenderer {
 
+        public Component getListCellRendererComponent(
+                JList list, 
+                Object value, 
+                int index, 
+                boolean isSelected, 
+                boolean cellHasFocus) {
+
+            JLabel label = new JLabel(){
+                public Dimension getPreferredSize(){
+                    return new Dimension(120, 70);
+                }
+            };
+            label.setText(String.valueOf(value));
+
+            return label;
+        }
+    } 
+    
+    
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         
         id = txtNumOrder.getText();
