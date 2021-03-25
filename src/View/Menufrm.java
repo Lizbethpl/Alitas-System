@@ -102,7 +102,7 @@ public class Menufrm extends javax.swing.JFrame {
         jSLotDrink.setModel(modeloDrink);
         jSLotDesserts.setModel(modeloDessert);
         jSLotPackages.setModel(modeloPackage);
-        
+        txaDescriptionPack.setEditable(false);
         jSpLotAlitas.setUI(new BasicSpinnerUI() {
         @Override
       protected Component createNextButton() {

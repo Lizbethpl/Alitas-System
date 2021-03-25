@@ -12,6 +12,7 @@ import Model.Products;
 import Model.Sale;
 import Model.sale_products;
 import View.Menufrm;
+import java.awt.Color;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,6 +60,7 @@ public class CtrlSale implements ActionListener {
         frmsale.jSale.getColumnModel().getColumn(2).setMinWidth(0);
         frmsale.jSale.getColumnModel().getColumn(2).setPreferredWidth(0);
         this.frmsale.btnPagar.setEnabled(false);
+        this.frmsale.btnPagar.setBackground(Color.getHSBColor(240,144,38));
         this.frmsale.jcPackages.addActionListener(this);
     }
      
@@ -104,6 +106,7 @@ public class CtrlSale implements ActionListener {
         }if (e.getSource()== frmsale.btnTotal) {
             frmsale.txtTotalPrice.setText(Double.toString(csale.totalPrice(Integer.parseInt(frmsale.txtNumOrder.getText()))));
             frmsale.btnPagar.setEnabled(true);
+            this.frmsale.btnPagar.setBackground(Color.GREEN);
             
         }if (e.getSource()== frmsale.btnLimpiar) {
             eliminar();
